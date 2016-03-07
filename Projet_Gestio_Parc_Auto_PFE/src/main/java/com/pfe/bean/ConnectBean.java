@@ -14,7 +14,6 @@ public class ConnectBean {
 	private String login;
 	private String motPasse;
 	private String action;
-
 	public String getAction() {
 		return action;
 	}
@@ -65,7 +64,7 @@ public class ConnectBean {
 		{	
 			faces.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_WARN, "erreur",
-					"Vous dever remplire tout les champs "));
+					"Vous dever remplire svp tout les champs "));
 	    }
 		else if (login.equals("admin") && motPasse.equals("admin")) {
 			return "/tableau_bord.xhtml";
