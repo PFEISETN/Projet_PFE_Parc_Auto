@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Gestion Réparation</title>
+	<h:form id="f1">
+		<p:growl id="growl" life="3000" />
+		<div align="center">
+			<h:outputText value="Liste Des Reparation"
+				style="font-size:36px;font-weight:bold"></h:outputText>
+			<br /> <br /> <br />
+			<div style="width: 50%">
+				<div align="right">
+					<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
+						update=":f1:f2:idDialog" oncomplete="PF('dialogPersonne').show()"
+						actionListener="#{reparationBean.ajouterReparation()}" />
+				</div>
+
+				<p:dataTable var="reparation" value="#{reparationBean.reparations}"
+					border="1" paginator="true" paginatorPosition="bottom"
+					paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					rows="10">
+					<p:column width="10%">
+						<f:facet name="header">
+							<h:outputLabel value="Code reparation "
+								style="font-size:small;font-weight:bold;width:200px" />
+						</f:facet>
+						<h:outputText value=" #{reparation.numeroReparation}" />
+
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputLabel value="Date debut reparation : "
+								style="font-size:small;font-weight:bold;width:200px" />
+						</f:facet>
+						<h:outputText value="#{reparation.dateDebRep}">
+							<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputLabel value="Date fin reparation : "
+								style="font-size:small;font-weight:bold;width:200px" />
+						</f:facet>
+						<h:outputText value="#{reparation.dateFinReparation}">
+							<f:convertDateTime pattern="dd/MM/yyyy"></f:convertDateTime>
+						</h:outputText>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputLabel value="Duree reparation : "
+								style="font-size:small;font-weight:bold;width:200px" />
+						</f:facet>
+						<h:outputText value=" #{reparation.dureReparation}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputLabel value="Prix reparation : "
+								style="font-size:small;font-weight:bold;width:200px" />
+						</f:facet>
+						<h:outputText value=" #{reparation.prixReparation}" />
+					</p:column>
+					<p:column style="width:20%">
+						<p:commandButton
+							actionListener="#{reparationBean.modifierReparation(reparation)}"
+							update=":f1:f2:idDialog" oncomplete="PF('dialogPersonne').show()"
+							icon="ui-icon-pencil" title="Modification" />
+						<p:commandButton
+							actionListener="#{reparationBean.Supprimer(reparation)}"
+							icon="ui-icon-trash" title="Suppression Personnel"
+							update=":f1,:f1:growl">
+							<p:confirm header="Suppression reparation"
+								message="Voulez-vous vraiment supprimer cette reparation ?"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog global="true" showEffect="fade"
+					hideEffect="explode">
+					<p:commandButton value="Oui" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Non" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+				<h:form id="f2">
+					<p:dialog id="idDialog" widgetVar="dialogPersonne" modal="true"
+						showHeader="false" closable="false" resizable="false">
+						<p:panel id="dialog">
+							<h:panelGrid columns="2">
+								<p:outputLabel value="date debut reparation : " />
+								<p:inputText value="#{reparationBean.dateDRep}" />
+
+								<p:outputLabel value="date fin reparation : " />
+								<p:inputText value="#{reparationBean.dateFDep}" />
+
+								<p:outputLabel value="Duree reparation : " />
+								<p:inputText value="#{reparationBean.dureReparation}" />
+
+								<p:outputLabel value="Prix reparation : " />
+								<p:inputText value="#{reparationBean.prixReparation}" />
+<!-- 								<p:outputLabel value="Type de la Panne : " />
+ -->								<!-- <p:selectOneMenu value="#{reparationBean.num_panne}"
+									panelStyle="width:180px" filter="true"
+									filterMatchMode="startsWith" effect="fade"
+									style="font-size:small;font-weight:bold">
+									<f:selectItem itemLabel=Selectioner itemValue="" />
+									<f:selectItems value="#{reparationBean.pannes}" var="p"
+										itemLabel="#{p.typePanne}" itemValue="#{p.numeroPanne}" />
+								</p:selectOneMenu> -->
+							</h:panelGrid>
+							<!-- <p:dataTable var="p" id="checkboxDT" rowKey="#{p.numeroPanne}"
+								value="#{reparationBean.pannes}">
+								<p:column selectionMode="multiple"
+									style="width:16px;text-align:center" />
+								<p:column headerText="type du Panne">
+									<h:outputText value="#{p.typePanne}" />
+								</p:column>
+								<f:facet name="footer">
+									<p:commandButton process="checkboxDT" update=":f1"
+										icon="ui-icon-search" value="View"/>
+								</f:facet>
+							</p:dataTable> -->
+							<h:panelGrid columns="2">
+								<p:commandButton value="Valider" icon="ui-icon-check"
+									oncomplete="PF('dialogPersonne').hide();"
+									actionListener="#{reparationBean.validation()}" update=":f1" />
+								<p:commandButton value="Annuler"
+									icon="ui-icon-arrowreturnthick-1-n"
+									actionListener="#{reparationBean.closeDiag()}" update=":f1"
+									oncomplete="PF('dialogPersonne').hide();" />
+							</h:panelGrid>
+						</p:panel>
+					</p:dialog>
+				</h:form>
+			</div>
+		</div>
+	</h:form>
+</h:head>
+</html>

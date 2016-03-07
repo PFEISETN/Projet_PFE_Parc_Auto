@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29 f?vr. 2016 10:37:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pfe.persistance.Personnel" table="personnel" catalog="parc_auto_pfe">
+        <id name="matricule" type="java.lang.Integer">
+            <column name="matricule" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="compte" class="com.pfe.persistance.Compte" fetch="select">
+            <column name="num_compte" />
+        </many-to-one>
+        <property name="nomPer" type="string">
+            <column name="nom_per" length="45" />
+        </property>
+        <property name="prenomPer" type="string">
+            <column name="prenom_per" length="45" />
+        </property>
+        <property name="telephone" type="java.lang.Integer">
+            <column name="telephone" />
+        </property>
+        <property name="cin" type="string">
+            <column name="CIN" length="45" />
+        </property>
+        <property name="dateNaissance" type="timestamp">
+            <column name="date_naissance" length="19" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <set name="comptes" table="compte" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="matricule" />
+            </key>
+            <one-to-many class="com.pfe.persistance.Compte" />
+        </set>
+    </class>
+</hibernate-mapping>

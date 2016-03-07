@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 29 f?vr. 2016 10:37:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pfe.persistance.Panne" table="panne" catalog="parc_auto_pfe">
+        <id name="numeroPanne" type="java.lang.Integer">
+            <column name="numero_panne" />
+            <generator class="identity" />
+        </id>
+        <property name="typePanne" type="string">
+            <column name="type_panne" length="45" />
+        </property>
+        <set name="reparations" table="reparation" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_panne" />
+            </key>
+            <one-to-many class="com.pfe.persistance.Reparation" />
+        </set>
+        <set name="repPannes" table="rep_panne" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_panne" />
+            </key>
+            <one-to-many class="com.pfe.persistance.RepPanne" />
+        </set>
+    </class>
+</hibernate-mapping>

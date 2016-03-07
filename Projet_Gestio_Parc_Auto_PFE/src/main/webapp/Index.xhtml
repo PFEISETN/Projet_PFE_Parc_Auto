@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<link href="assets/css/bootstrap.css" rel="stylesheet" />
+	<link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+	<link href="assets/css/style.css" rel="stylesheet" />
+	<link href="assets/css/style-responsive.css" rel="stylesheet" />
+	<title>Gestion parc Automobile</title>
+</h:head>
+<h:body>
+	<div id="login-page">
+		<div class="container" style="height: 322px; width: 813px;">
+			<form class="form-login">
+				<h2 class="form-login-heading">Connecter ici</h2>
+				<div class="login-wrap">
+					<h:form>
+						<p:growl id="growl" showDetail="true" sticky="true" />
+						<h:panelGrid columns="2" cellpadding="5" style=" width : 275px;">
+							<p:outputLabel value="Login : " />
+							<h:panelGroup>
+								<p:inputText id="saisie1" value="#{connectBean.login}"
+									styleClass="saisie" />
+								<p:message for="saisie1" styleClass="error" />
+							</h:panelGroup>
+							<p:outputLabel value="Mot de passe :" />
+							<h:panelGroup>
+								<p:inputText value="#{connectBean.motPasse}" />
+							</h:panelGroup>
+							<br></br>
+							<p:commandButton value="Valider"
+								action="#{connectBean.connecter()}" icon="ui-icon-key"
+								update="growl" ajax="false" />
+						</h:panelGrid>
+					</h:form>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script type="text/javascript"
+		src="assets/js/jquery.backstretch.min.js"></script>
+	<script>
+        $.backstretch("assets/img/back.jpg", {speed: 500});
+    </script>
+</h:body>
+</html>
