@@ -23,161 +23,136 @@ public class Personnel {
 	private Date dateNaissance;
 	private String adresse;
 	private String email;
+	private String numero_tel1;
+	private String numero_tel2;
 	private Set<Compte> comptes = new HashSet<Compte>(0);
     private Set<Reclamation> reclamations=new HashSet<Reclamation>(0);
-    
-	public Personnel() {
-	}
-
-	public Personnel(Compte compte, Departement departement,
-			Typepersonnel typepersonnel, Service service, String nom,
-			String prenom, String cin, String telephone, Date dateNaissance,
-			String adresse, String email, Set<Compte> comptes,Set<Reclamation> reclamations) {
-		this.compte = compte;
-		this.departement = departement;
-		this.typepersonnel = typepersonnel;
-		this.service = service;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.cin = cin;
-		this.telephone = telephone;
-		this.dateNaissance = dateNaissance;
-		this.adresse = adresse;
-		this.email = email;
-		this.comptes = comptes;
-		this.reclamations=reclamations;
-	}
-
 	public Integer getMatricule() {
-		return this.matricule;
+		return matricule;
 	}
-
 	public void setMatricule(Integer matricule) {
 		this.matricule = matricule;
 	}
-
 	public Compte getCompte() {
-		return this.compte;
+		return compte;
 	}
-
 	public void setCompte(Compte compte) {
 		this.compte = compte;
 	}
-
 	public Departement getDepartement() {
-		return this.departement;
+		return departement;
 	}
-
 	public void setDepartement(Departement departement) {
 		this.departement = departement;
 	}
-
 	public Typepersonnel getTypepersonnel() {
-		return this.typepersonnel;
+		return typepersonnel;
 	}
-
 	public void setTypepersonnel(Typepersonnel typepersonnel) {
 		this.typepersonnel = typepersonnel;
 	}
-
 	public Service getService() {
-		return this.service;
+		return service;
 	}
-
 	public void setService(Service service) {
 		this.service = service;
 	}
-
 	public String getNom() {
-		return this.nom;
+		return nom;
 	}
-
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
 	public String getPrenom() {
-		return this.prenom;
+		return prenom;
 	}
-
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
 	public String getCin() {
-		return this.cin;
+		return cin;
 	}
-
 	public void setCin(String cin) {
 		this.cin = cin;
 	}
-
 	public String getTelephone() {
-		return this.telephone;
+		return telephone;
 	}
-
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-
 	public Date getDateNaissance() {
-		return this.dateNaissance;
+		return dateNaissance;
 	}
-
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-
 	public String getAdresse() {
-		return this.adresse;
+		return adresse;
 	}
-
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public Set<Compte> getComptes() {
-		return this.comptes;
+	public String getNumero_tel1() {
+		return numero_tel1;
 	}
-
+	public void setNumero_tel1(String numero_tel1) {
+		this.numero_tel1 = numero_tel1;
+	}
+	public String getNumero_tel2() {
+		return numero_tel2;
+	}
+	public void setNumero_tel2(String numero_tel2) {
+		this.numero_tel2 = numero_tel2;
+	}
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
 	public void setComptes(Set<Compte> comptes) {
 		this.comptes = comptes;
 	}
-   
 	public Set<Reclamation> getReclamations() {
 		return reclamations;
 	}
-
 	public void setReclamations(Set<Reclamation> reclamations) {
 		this.reclamations = reclamations;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
 		result = prime * result + ((cin == null) ? 0 : cin.hashCode());
+		result = prime * result + ((compte == null) ? 0 : compte.hashCode());
+		result = prime * result + ((comptes == null) ? 0 : comptes.hashCode());
 		result = prime * result
 				+ ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
+		result = prime * result
+				+ ((departement == null) ? 0 : departement.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result
 				+ ((matricule == null) ? 0 : matricule.hashCode());
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
+		result = prime * result
+				+ ((numero_tel1 == null) ? 0 : numero_tel1.hashCode());
+		result = prime * result
+				+ ((numero_tel2 == null) ? 0 : numero_tel2.hashCode());
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		result = prime * result
+				+ ((reclamations == null) ? 0 : reclamations.hashCode());
+		result = prime * result + ((service == null) ? 0 : service.hashCode());
+		result = prime * result
 				+ ((telephone == null) ? 0 : telephone.hashCode());
+		result = prime * result
+				+ ((typepersonnel == null) ? 0 : typepersonnel.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -197,10 +172,25 @@ public class Personnel {
 				return false;
 		} else if (!cin.equals(other.cin))
 			return false;
+		if (compte == null) {
+			if (other.compte != null)
+				return false;
+		} else if (!compte.equals(other.compte))
+			return false;
+		if (comptes == null) {
+			if (other.comptes != null)
+				return false;
+		} else if (!comptes.equals(other.comptes))
+			return false;
 		if (dateNaissance == null) {
 			if (other.dateNaissance != null)
 				return false;
 		} else if (!dateNaissance.equals(other.dateNaissance))
+			return false;
+		if (departement == null) {
+			if (other.departement != null)
+				return false;
+		} else if (!departement.equals(other.departement))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -217,19 +207,48 @@ public class Personnel {
 				return false;
 		} else if (!nom.equals(other.nom))
 			return false;
+		if (numero_tel1 == null) {
+			if (other.numero_tel1 != null)
+				return false;
+		} else if (!numero_tel1.equals(other.numero_tel1))
+			return false;
+		if (numero_tel2 == null) {
+			if (other.numero_tel2 != null)
+				return false;
+		} else if (!numero_tel2.equals(other.numero_tel2))
+			return false;
 		if (prenom == null) {
 			if (other.prenom != null)
 				return false;
 		} else if (!prenom.equals(other.prenom))
+			return false;
+		if (reclamations == null) {
+			if (other.reclamations != null)
+				return false;
+		} else if (!reclamations.equals(other.reclamations))
+			return false;
+		if (service == null) {
+			if (other.service != null)
+				return false;
+		} else if (!service.equals(other.service))
 			return false;
 		if (telephone == null) {
 			if (other.telephone != null)
 				return false;
 		} else if (!telephone.equals(other.telephone))
 			return false;
+		if (typepersonnel == null) {
+			if (other.typepersonnel != null)
+				return false;
+		} else if (!typepersonnel.equals(other.typepersonnel))
+			return false;
 		return true;
 	}
-
+	public Personnel() {
+		super();
+	}
+    
+	
 	
 
 }

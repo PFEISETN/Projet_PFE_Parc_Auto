@@ -2,10 +2,12 @@ package com.pfe.bean;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import com.pfe.persistance.Compte;
 import com.pfe.persistance.Departement;
 import com.pfe.persistance.Personnel;
@@ -30,19 +32,55 @@ public class PersonnelBean {
 	private String email;
 	private String adresse;
 	private String date_nai;
+	private String numero_tel1;
+	private String numero_tel2;
 	private Integer numerocompte;
 	private Integer numerodepartement;
 	private Integer numeroservice;
 	private Integer numerotypeP;
 	private String action;
 
-	List<Personnel> pls = new ArrayList<Personnel>();
+	public String getNumero_tel1() {
+		return numero_tel1;
+	}
 
+	public void setNumero_tel1(String numero_tel1) {
+		this.numero_tel1 = numero_tel1;
+	}
+
+	public String getNumero_tel2() {
+		return numero_tel2;
+	}
+
+	public void setNumero_tel2(String numero_tel2) {
+		this.numero_tel2 = numero_tel2;
+	}
+
+	List<Personnel> pls = new ArrayList<Personnel>();
+    Personnel per = new Personnel();
 	public List<Personnel> getPls() {
 		pls = new PersonnelService().rechercheTousPersonnel();
 		return pls;
 	}
 
+	
+	  private List<Personnel> filtrePersonnel;
+	  
+	public List<Personnel> getFiltrePersonnel() {
+		return filtrePersonnel;
+	}
+
+	public void setFiltrePersonnel(List<Personnel> filtrePersonnel) {
+		this.filtrePersonnel = filtrePersonnel;
+	}
+
+	public Personnel chercherPer()
+	{
+		per=new PersonnelService().recherchePersonnelParId(matricule);
+		return per;
+		//System.out.print(per.getCin());
+	}
+	
 	public void setPls(List<Personnel> pls) {
 		this.pls = pls;
 	}
@@ -221,6 +259,8 @@ public class PersonnelBean {
 		numerodepartement = null;
 		numeroservice = null;
 		numerotypeP = null;
+		numero_tel1=null;
+		numero_tel2=null;
 		action = "Ajouter";
 	}
 
@@ -232,7 +272,8 @@ public class PersonnelBean {
 		cin = p.getCin();
 		email = p.getEmail();
 		adresse = p.getAdresse();
-
+		numero_tel1=p.getNumero_tel1();
+		numero_tel2=p.getNumero_tel2();
 		if (p.getCompte() != null)
 			numerocompte = p.getCompte().getNumeroCompte();
 
@@ -253,7 +294,8 @@ public class PersonnelBean {
 	 { 
 		FacesContext faces = FacesContext.getCurrentInstance();
 		   Personnel p=new Personnel();
-		   if((nom =="")||(prenom =="")||(email =="")||(adresse =="")||(cin =="")||(telephone==""))
+		   if((nom =="")||(prenom =="")||(email =="")||(adresse =="")
+				||(cin =="")||(telephone=="")||(numero_tel1=="")||(numero_tel2==""))
 		   { 
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"vous dever remplire tous les champs !! ", "")); 
@@ -263,6 +305,16 @@ public class PersonnelBean {
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Le numero du telephone est invalide !! ", "")); 
 		   }
+//		   else if ((numero_tel1.length() > 8)||((numero_tel1.length() < 8)))
+//		   {  
+//			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+//					"Le numero du telephone1 est invalide !! ", "")); 
+//		   }
+//		   else if ((numero_tel2.length() > 8)||((numero_tel2.length() < 8)))
+//		   {  
+//			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+//					"Le numero du telephone2 est invalide !! ", "")); 
+//		   }
 		   else if ((cin.length() > 8)||((cin.length() < 8)))
 		   {  
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -276,6 +328,8 @@ public class PersonnelBean {
 			p.setCin(cin);
 			p.setTelephone(telephone);
 			p.setAdresse(adresse);
+			p.setNumero_tel1(numero_tel1);
+			p.setNumero_tel2(numero_tel2);
 			Compte cmpt = new Compte();
 			cmpt.setNumeroCompte(numerocompte);
 			Departement dep = new Departement();
@@ -329,6 +383,8 @@ public class PersonnelBean {
 		numerodepartement = null;
 		numeroservice = null;
 		numerotypeP = null;
+		numero_tel1=null;
+		numero_tel2=null;
 
 	}
 

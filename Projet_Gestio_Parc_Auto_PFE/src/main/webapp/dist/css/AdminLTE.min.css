@@ -608,7 +608,7 @@ a:hover, a:active, a:focus {
 	.sidebar-mini.sidebar-collapse .content-wrapper, .sidebar-mini.sidebar-collapse .right-side,
 		.sidebar-mini.sidebar-collapse .main-footer {
 		margin-left: 50px !important;
-		z-index: 840
+		z-index: 1000
 	}
 	.sidebar-mini.sidebar-collapse .main-sidebar {
 		-webkit-transform: translate(0, 0);

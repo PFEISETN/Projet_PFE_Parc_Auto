@@ -41,7 +41,12 @@
         <property name="email" type="java.lang.String">
             <column name="email" />
         </property>
-        
+        <property name="numero_tel1" type="java.lang.String">
+            <column name="numero_tel1" />
+        </property>
+        <property name="numero_tel2" type="java.lang.String">
+            <column name="numero_tel2" />
+        </property>
         <set name="comptes" table="compte" inverse="false" lazy="true">
             <key>
                 <column name="matricule" />

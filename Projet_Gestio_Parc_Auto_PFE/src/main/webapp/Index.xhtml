@@ -15,22 +15,24 @@
 </h:head>
 <h:body>
 	<div id="login-page">
-		<div class="container" style="height: 322px; width: 813px;">
+		<div class="container" >
 			<form class="form-login">
 				<h2 class="form-login-heading">Connecter ici</h2>
 				<div class="login-wrap">
 					<h:form>
 						<p:growl id="growl" showDetail="true" sticky="true" />
-						<h:panelGrid columns="2" cellpadding="5" style=" width : 275px;">
+						<h:panelGrid columns="2" cellpadding="10" style=" width : 275px;">
 							<p:outputLabel value="Login : " />
 							<h:panelGroup>
 								<p:inputText id="saisie1" value="#{connectBean.login}"
-									styleClass="saisie" />
+									styleClass="saisie" required="true"  requiredMessage="Entrer utilisateur"/> 
 								<p:message for="saisie1" styleClass="error" />
 							</h:panelGroup>
 							<p:outputLabel value="Mot de passe :" />
 							<h:panelGroup>
-								<p:inputText value="#{connectBean.motPasse}" />
+								<p:inputText id="saisie2" value="#{connectBean.motPasse}" 
+								required="true"  requiredMessage="Entrer mot de passe"/> 
+								<p:message for="saisie2" styleClass="error" />
 							</h:panelGroup>
 							<br></br>
 							<p:commandButton value="Valider"
@@ -47,7 +49,7 @@
 	<script type="text/javascript"
 		src="assets/js/jquery.backstretch.min.js"></script>
 	<script>
-        $.backstretch("assets/img/back.jpg", {speed: 500});
+        $.backstretch("assets/img/back.png", {speed: 500});
     </script>
 </h:body>
 </html>

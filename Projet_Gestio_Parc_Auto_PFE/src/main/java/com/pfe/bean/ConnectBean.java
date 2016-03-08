@@ -39,6 +39,13 @@ public class ConnectBean {
 		this.motPasse = motPasse;
 	}
 
+	
+	public void ajout(){
+		login=null;
+		motPasse=null;
+		action="Ajout";
+	}
+	
 	public boolean existeCompte(String login, String motpass) {
 		CompteService dao = new CompteService();
 		Compte cmp = new Compte();
@@ -90,6 +97,11 @@ public class ConnectBean {
 		}
 	}
 
+	public void closeDiag() {
+		login = null;
+		motPasse = null;	
+	}
+	
 	public String init() {
 		login = null;
 		motPasse = null;
