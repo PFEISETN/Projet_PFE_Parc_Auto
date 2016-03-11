@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 mars 2016 11:36:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pfe.persistance.Marque" table="marque">
+        <id name="numero_marque" type="java.lang.Integer">
+            <column name="numero_marque" />
+            <generator class="increment" />
+        </id>
+        <property name="nom_marque" type="java.lang.String">
+            <column name="nom_marque" />
+        </property>
+        <set name="vehicule2" table="vehicule" inverse="false" lazy="true">
+            <key>
+                <column name="numero_marque" />
+            </key>
+            <one-to-many class="com.pfe.persistance.Vehicule" />
+        </set>
+        <set name="modeles" table="modele" inverse="false" lazy="true">
+            <key>
+                <column name="numero_marque" />
+            </key>
+            <one-to-many class="com.pfe.persistance.Modele" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 mars 2016 11:36:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pfe.persistance.Modele" table="modele">
+        <id name="numero_modele" type="java.lang.Integer">
+            <column name="numero_modele" />
+            <generator class="increment" />
+        </id>
+        <property name="nom_modele" type="java.lang.String">
+            <column name="nom_modele" />
+        </property>
+        <property name="type_modele" type="java.lang.String">
+            <column name="type_modele" />
+        </property>
+        <many-to-one name="marque" class="com.pfe.persistance.Marque" fetch="select">
+            <column name="numero_marque" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

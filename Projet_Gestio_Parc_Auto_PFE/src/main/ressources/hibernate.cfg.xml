@@ -19,5 +19,15 @@
   <mapping class="com.pfe.persistance.SousTypeEntretien" resource="com/pfe/persistance/SousTypeEntretien.hbm.xml"/>
   <mapping class="com.pfe.persistance.Mecanicien" resource="com/pfe/persistance/Mecanicien.hbm.xml"/>
   <mapping class="com.pfe.persistance.Reclamation" resource="com/pfe/persistance/Reclamation.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Etat" resource="com/pfe/persistance/Etat.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Marque" resource="com/pfe/persistance/Marque.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Modele" resource="com/pfe/persistance/Modele.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Categorie" resource="com/pfe/persistance/Categorie.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Vehicule" resource="com/pfe/persistance/Vehicule.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Vignette" resource="com/pfe/persistance/Vignette.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Panne" resource="com/pfe/persistance/Panne.hbm.xml"/>
+  <mapping class="com.pfe.persistance.PieceRechange" resource="com/pfe/persistance/PieceRechange.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Reparation" resource="com/pfe/persistance/Reparation.hbm.xml"/>
+  <mapping class="com.pfe.persistance.RepPanne" resource="com/pfe/persistance/RepPanne.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>
