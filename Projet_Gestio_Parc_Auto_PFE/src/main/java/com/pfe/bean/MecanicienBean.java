@@ -18,12 +18,7 @@ public class MecanicienBean {
 	private String adresse;
 	private Integer telephone;
 	private String action;
-	
 	List<Mecanicien> Mecns=new ArrayList<Mecanicien>();
-	
-	
-	
-	
 	public List<Mecanicien> getMecns() {
 		Mecns=new MecanicienService().rechercheTousMecanicien();
 		return Mecns;
@@ -88,16 +83,19 @@ public class MecanicienBean {
 		   mec.setAdresse(adresse);
 		   mec.setTelephone(telephone);
 		   
-		   
-		  	if(action!= null && action.equals("Ajouter")) 
+		  if((nom_mecanicien=="")||(adresse==null)||(telephone==null))
+		   { 
+			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"vous dever remplire tous les champs !! ", "")); 
+		   }
+		  else if(action!= null && action.equals("Ajouter")) 
 			  { 
-		  		//if (mec != null && mec.size() > 0)
-		  		 new MecanicienService().ajouterMecanicien(mec);
+		  		new MecanicienService().ajouterMecanicien(mec);
 		  		faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Mecanicien ajoutée avec succès.", "")); 
 			  }
 				  
-		  		if (action != null && action.equals("Modification")) {
+		  else if (action != null && action.equals("Modification")) {
 					mec.setNumero_mec(numero_mec);
 					 new MecanicienService().modifierMecanicien(mec);
 					faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,

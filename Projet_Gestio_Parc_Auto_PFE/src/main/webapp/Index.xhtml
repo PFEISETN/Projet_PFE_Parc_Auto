@@ -18,24 +18,25 @@
 		<div class="container" >
 			<form class="form-login">
 				<h2 class="form-login-heading">Connecter ici</h2>
-				<div class="login-wrap">
+				<div class="login-wrap" style=" width : 494px;">
 					<h:form>
-						<p:growl id="growl" showDetail="true" sticky="true" />
-						<h:panelGrid columns="2" cellpadding="10" style=" width : 275px;">
-							<p:outputLabel value="Login : " />
-							<h:panelGroup>
-								<p:inputText id="saisie1" value="#{connectBean.login}"
-									styleClass="saisie" required="true"  requiredMessage="Entrer utilisateur"/> 
-								<p:message for="saisie1" styleClass="error" />
-							</h:panelGroup>
-							<p:outputLabel value="Mot de passe :" />
-							<h:panelGroup>
-								<p:inputText id="saisie2" value="#{connectBean.motPasse}" 
-								required="true"  requiredMessage="Entrer mot de passe"/> 
-								<p:message for="saisie2" styleClass="error" />
-							</h:panelGroup>
-							<br></br>
-							<p:commandButton value="Valider"
+						<p:growl id="growl" showDetail="true" sticky="true" life="3000"/>
+						<h:panelGrid columns="2" cellpadding="5" style=" width : 60px;" cellspacing="5">
+							<p:outputLabel value="Login " style="font-size:small;font-weight:bold;width:90px" />
+							<p:inputText value="#{connectBean.login}" required="true" styleClass="saisie" /> 
+						    <p:outputLabel></p:outputLabel>
+						    <p:outputLabel></p:outputLabel>
+						    <p:outputLabel></p:outputLabel>
+						    <p:outputLabel></p:outputLabel>
+							<p:outputLabel value="Mot de passe " style="font-size:small;font-weight:bold;width:90px"/>
+							<p:password styleClass="form-text" id="motPasse"  
+							value="#{connectBean.motPasse}" widht="29px"/>	
+							<p:outputLabel></p:outputLabel>
+						    <p:outputLabel></p:outputLabel>
+							<p:outputLabel></p:outputLabel>
+							<p:outputLabel></p:outputLabel>
+							<p:outputLabel></p:outputLabel>
+							<p:commandButton value="Connecter " 
 								action="#{connectBean.connecter()}" icon="ui-icon-key"
 								update="growl" ajax="false" />
 						</h:panelGrid>

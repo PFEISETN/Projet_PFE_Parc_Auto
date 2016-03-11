@@ -1,46 +1,231 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+   <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>AdminLTE 2 | Dashboard</title>
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-	<link rel="stylesheet"
-		href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-	<link rel="stylesheet" href="dist/css/AdminLTE.min.css" />
-	<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css" />
-	<link rel="stylesheet" href="plugins/iCheck/flat/blue.css" />
-	<link rel="stylesheet" href="plugins/morris/morris.css" />
-	<link rel="stylesheet"
-		href="plugins/jvectormap/jquery-jvectormap-1.2.2.css" />
-	<link rel="stylesheet" href="plugins/datepicker/datepicker3.css" />
-	<link rel="stylesheet"
-		href="plugins/daterangepicker/daterangepicker-bs3.css" />
-	<link rel="stylesheet"
-		href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" />
-</h:head>
-<h:body class="hold-transition skin-blue sidebar-mini">
-	<div class="wrapper">
-		<header class="main-header"> <a href="index2.html"
-			class="logo"> <span class="logo-lg"><b>Parc</b>AUTO</span>
-		</a></header>
-		<aside class="main-sidebar">
-		<section class="sidebar">
+	<title>Parc Auto</title>
+	<meta
+		content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+		name='viewport'></meta>
+	<meta name="description" content="Developed By M Abdur Rokib Promy"></meta>
+	<meta name="keywords"
+		content="Admin, Bootstrap 3, Template, Theme, Responsive"></meta>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
+	<link href="css/jvectormap/jquery-jvectormap-1.2.2.css"
+		rel="stylesheet" type="text/css" />
+	<link href="css/datepicker/datepicker3.css" rel="stylesheet"
+		type="text/css" />
+	<link href="css/daterangepicker/daterangepicker-bs3.css"
+		rel="stylesheet" type="text/css" />
+	<link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=Lato'
+		rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	    <style type="text/css"></style>
+    <style >
+    .ui-growl {
+    position:absolute;
+    top:85%;
+    left:75%;
+}
+    </style></h:head>
+<h:body class="skin-black">
+	<header class="header"> <a href="index.html" class="logo">
+		Administrateur </a> <nav class="navbar navbar-static-top"
+		role="navigation"> <a href="#" class="navbar-btn sidebar-toggle"
+		data-toggle="offcanvas" role="button"> <span class="sr-only">Toggle
+			navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	</a>
+	<div class="navbar-right">
+		<ul class="nav navbar-nav">
+			<!-- Messages: style can be found in dropdown.less-->
+			<li class="dropdown messages-menu"><a href="#"
+				class="dropdown-toggle" data-toggle="dropdown"> <i
+					class="fa fa-envelope"></i> <span class="label label-success">4</span>
+			</a>
+				<ul class="dropdown-menu">
+					<li class="header">You have 4 messages</li>
+					<li><ul class="menu">
+							<li><a href="#">
+									<div class="pull-left">
+										<img src="img/26115.jpg" class="img-circle" alt="User Image" />
+									</div>
+									<h4>Support Team</h4>
+									<p>Why not buy a new awesome theme?</p> <small
+									class="pull-right"><i class="fa fa-clock-o"></i> 5 mins</small>
+							</a></li>
+							<!-- end message -->
+							<li><a href="#">
+									<div class="pull-left">
+										<img src="img/26115.jpg" class="img-circle" alt="user image" />
+									</div>
+									<h4>Director Design Team</h4>
+									<p>Why not buy a new awesome theme?</p> <small
+									class="pull-right"><i class="fa fa-clock-o"></i> 2
+										hours</small>
+							</a></li>
+							<li><a href="#">
+									<div class="pull-left">
+										<img src="img/avatar.png" class="img-circle" alt="user image" />
+									</div>
+									<h4>Developers</h4>
+									<p>Why not buy a new awesome theme?</p> <small
+									class="pull-right"><i class="fa fa-clock-o"></i> Today</small>
+							</a></li>
+							<li><a href="#">
+									<div class="pull-left">
+										<img src="img/26115.jpg" class="img-circle" alt="user image" />
+									</div>
+									<h4>Sales Department</h4>
+									<p>Why not buy a new awesome theme?</p> <small
+									class="pull-right"><i class="fa fa-clock-o"></i>
+										Yesterday</small>
+							</a></li>
+							<li><a href="#">
+									<div class="pull-left">
+										<img src="img/avatar.png" class="img-circle" alt="user image" />
+									</div>
+									<h4>Reviewers</h4>
+									<p>Why not buy a new awesome theme?</p> <small
+									class="pull-right"><i class="fa fa-clock-o"></i> 2 days</small>
+							</a></li>
+						</ul></li>
+					<li class="footer"><a href="#">See All Messages</a></li>
+				</ul></li>
+			<li class="dropdown tasks-menu"><a href="#"
+				class="dropdown-toggle" data-toggle="dropdown"> <i
+					class="fa fa-tasks"></i> <span class="label label-danger">9</span>
+			</a>
+				<ul class="dropdown-menu">
+					<li class="header">You have 9 tasks</li>
+					<li>
+						<!-- inner menu: contains the actual data -->
+						<ul class="menu">
+							<li>
+								<!-- Task item --> <a href="#">
+									<h3>
+										Design some buttons <small class="pull-right">20%</small>
+									</h3>
+									<div class="progress progress-striped xs">
+										<div class="progress-bar progress-bar-success"
+											style="width: 20%" role="progressbar" aria-valuenow="20"
+											aria-valuemin="0" aria-valuemax="100">
+											<span class="sr-only">20% Complete</span>
+										</div>
+									</div>
+							</a>
+							</li>
+							<!-- end task item -->
+							<li>
+								<!-- Task item --> <a href="#">
+									<h3>
+										Create a nice theme <small class="pull-right">40%</small>
+									</h3>
+									<div class="progress progress-striped xs">
+										<div class="progress-bar progress-bar-danger"
+											style="width: 40%" role="progressbar" aria-valuenow="20"
+											aria-valuemin="0" aria-valuemax="100">
+											<span class="sr-only">40% Complete</span>
+										</div>
+									</div>
+							</a>
+							</li>
+							<!-- end task item -->
+							<li>
+								<!-- Task item --> <a href="#">
+									<h3>
+										Some task I need to do <small class="pull-right">60%</small>
+									</h3>
+									<div class="progress progress-striped xs">
+										<div class="progress-bar progress-bar-info" style="width: 60%"
+											role="progressbar" aria-valuenow="20" aria-valuemin="0"
+											aria-valuemax="100">
+											<span class="sr-only">60% Complete</span>
+										</div>
+									</div>
+							</a>
+							</li>
+							<!-- end task item -->
+							<li>
+								<!-- Task item --> <a href="#">
+									<h3>
+										Make beautiful transitions <small class="pull-right">80%</small>
+									</h3>
+									<div class="progress progress-striped xs">
+										<div class="progress-bar progress-bar-warning"
+											style="width: 80%" role="progressbar" aria-valuenow="20"
+											aria-valuemin="0" aria-valuemax="100">
+											<span class="sr-only">80% Complete</span>
+										</div>
+									</div>
+							</a>
+							</li>
+							<!-- end task item -->
+						</ul>
+					</li>
+					<li class="footer"><a href="#">View all tasks</a></li>
+				</ul></li>
+			<!-- User Account: style can be found in dropdown.less -->
+			<li class="dropdown user user-menu"><a href="#"
+				class="dropdown-toggle" data-toggle="dropdown"> <i
+					class="fa fa-user"></i> <span>Administrateur <i
+						class="caret"></i></span>
+			</a>
+				<ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+					<li class="dropdown-header text-center">Account</li>
+
+					<li><a href="#"> <i class="fa fa-clock-o fa-fw pull-right"></i>
+							<span class="badge badge-success pull-right">10</span> Updates
+					</a> <a href="#"> <i class="fa fa-envelope-o fa-fw pull-right"></i>
+							<span class="badge badge-danger pull-right">5</span> Messages
+					</a> <a href="#"><i class="fa fa-magnet fa-fw pull-right"></i> <span
+							class="badge badge-info pull-right">3</span> Subscriptions</a> <a
+						href="#"><i class="fa fa-question fa-fw pull-right"></i> <span
+							class="badge pull-right">11</span> FAQ</a></li>
+
+					<li class="divider"></li>
+
+					<li><a href="#"> <i class="fa fa-user fa-fw pull-right"></i>
+							Profile
+					</a> <a data-toggle="modal" href="#modal-user-settings"> <i
+							class="fa fa-cog fa-fw pull-right"></i> Settings
+					</a></li>
+
+					<li class="divider"></li>
+
+					<li><a href="#"><i class="fa fa-ban fa-fw pull-right"></i>
+							Logout</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	</nav> </header>
+	<div class="wrapper row-offcanvas row-offcanvas-left">
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="left-side sidebar-offcanvas"> <!-- sidebar: style can be found in sidebar.less -->
+		<section class="sidebar"> <!-- Sidebar user panel -->
 		<div class="user-panel">
-			<div class="pull-left image"></div>
+			<div class="pull-left image">
+				<img src="img/26115.jpg" class="img-circle" alt="User Image" />
+			</div>
+			<div class="pull-left info">
+				<p>Bonjours, Admin</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+			</div>
 		</div>
 		<!-- search form -->
 		<form action="#" method="get" class="sidebar-form">
 			<div class="input-group">
 				<input type="text" name="q" class="form-control"
 					placeholder="Search..." /> <span class="input-group-btn">
-					<button type="submit" name="search" id="search-btn"
+					<button type='submit' name='seach' id='search-btn'
 						class="btn btn-flat">
 						<i class="fa fa-search"></i>
 					</button>
@@ -49,188 +234,73 @@
 		</form>
 		<!-- /.search form --> <!-- sidebar menu: : style can be found in sidebar.less -->
 		<ul class="sidebar-menu">
-			<li class="header">Profils</li>
-			<li class="active treeview"></li>
-			<li class="treeview">
-
-				<ul class="treeview-menu">
-					<li><a href="pages/layout/top-nav.html"><i
-							class="fa fa-circle-o"></i> Top Navigation</a></li>
-					<li><a href="pages/layout/boxed.html"><i
-							class="fa fa-circle-o"></i> Boxed</a></li>
-					<li><a href="pages/layout/fixed.html"><i
-							class="fa fa-circle-o"></i> Fixed</a></li>
-					<li><a href="pages/layout/collapsed-sidebar.html"><i
-							class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-				</ul>
-			</li>
-			<li></li>
-			<li class="treeview">
-
-				<ul class="treeview-menu">
-					<li><a href="pages/charts/chartjs.html"><i
-							class="fa fa-circle-o"></i> ChartJS</a></li>
-					<li><a href="pages/charts/morris.html"><i
-							class="fa fa-circle-o"></i> Morris</a></li>
-					<li><a href="pages/charts/flot.html"><i
-							class="fa fa-circle-o"></i> Flot</a></li>
-					<li><a href="pages/charts/inline.html"><i
-							class="fa fa-circle-o"></i> Inline charts</a></li>
-				</ul>
-			</li>
-			<li class="treeview">
-
-				<ul class="treeview-menu">
-					<li><a href="pages/UI/general.html"><i
-							class="fa fa-circle-o"></i> General</a></li>
-					<li><a href="pages/UI/icons.html"><i
-							class="fa fa-circle-o"></i> Icons</a></li>
-					<li><a href="pages/UI/buttons.html"><i
-							class="fa fa-circle-o"></i> Buttons</a></li>
-					<li><a href="pages/UI/sliders.html"><i
-							class="fa fa-circle-o"></i> Sliders</a></li>
-					<li><a href="pages/UI/timeline.html"><i
-							class="fa fa-circle-o"></i> Timeline</a></li>
-					<li><a href="pages/UI/modals.html"><i
-							class="fa fa-circle-o"></i> Modals</a></li>
-				</ul>
-			</li>
-			<li class="treeview">
-
-				<ul class="treeview-menu">
-					<li><a href="pages/forms/general.html"><i
-							class="fa fa-circle-o"></i> General Elements</a></li>
-					<li><a href="pages/forms/advanced.html"><i
-							class="fa fa-circle-o"></i> Advanced Elements</a></li>
-					<li><a href="pages/forms/editors.html"><i
-							class="fa fa-circle-o"></i> Editors</a></li>
-				</ul>
-			</li>
-			<li class="treeview">
-
-				<ul class="treeview-menu">
-					<li><a href="pages/tables/simple.html"><i
-							class="fa fa-circle-o"></i> Simple tables</a></li>
-					<li><a href="pages/tables/data.html"><i
-							class="fa fa-circle-o"></i> Data tables</a></li>
-				</ul>
-			</li>
-			<li><a href="pages/calendar.html"> <i class="fa fa-calendar"></i>
-					<span>Calendar</span> <small class="label pull-right bg-red">3</small>
+			<li class="active"><a href="Templette.xhtml"> <i
+					class="fa fa-dashboard"></i> <span>Tableau de bord</span>
 			</a></li>
-			<li></li>
-			<li class="treeview">
+			<li><a href="Parametres_general.xhtml"> <i
+					class="fa fa-cogs"></i> <span>Paramtre General</span>
+			</a></li>
 
-				<ul class="treeview-menu">
-					<li><a href="pages/examples/invoice.html"><i
-							class="fa fa-circle-o"></i> Invoice</a></li>
-					<li><a href="pages/examples/profile.html"><i
-							class="fa fa-circle-o"></i> Profile</a></li>
-					<li><a href="pages/examples/login.html"><i
-							class="fa fa-circle-o"></i> Login</a></li>
-					<li><a href="pages/examples/register.html"><i
-							class="fa fa-circle-o"></i> Register</a></li>
-					<li><a href="pages/examples/lockscreen.html"><i
-							class="fa fa-circle-o"></i> Lockscreen</a></li>
-					<li><a href="pages/examples/404.html"><i
-							class="fa fa-circle-o"></i> 404 Error</a></li>
-					<li><a href="pages/examples/500.html"><i
-							class="fa fa-circle-o"></i> 500 Error</a></li>
-					<li><a href="pages/examples/blank.html"><i
-							class="fa fa-circle-o"></i> Blank Page</a></li>
-				</ul>
-			</li>
-			<li class="treeview">
+			<li><a href="Statique.xhtml"> <i class="fa fa-bar-chart-o"></i>
+					<span> Statistique </span>
+			</a></li>
 
-				<ul class="treeview-menu">
-					<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-					<li><a href="#"><i class="fa fa-circle-o"></i> Level One <i
-							class="fa fa-angle-left pull-right"></i></a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i> Level Two
-									<i class="fa fa-angle-left pull-right"></i></a>
-								<ul class="treeview-menu">
-									<li><a href="#"><i class="fa fa-circle-o"></i> Level
-											Three</a></li>
-									<li><a href="#"><i class="fa fa-circle-o"></i> Level
-											Three</a></li>
-								</ul></li>
-						</ul></li>
-					<li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-				</ul>
-			</li>
+			<li><a href="Gestion_vehicules.xhtml"> <i
+					class="ion-ios7-cart"></i> <span> Gestion Vehicules </span>
+			</a></li>
+			<li><a href="general.html"> <i class="fa fa-wrench"></i> <span>Gestion
+						d'intervention</span>
+			</a></li>
+			<li><a href="Gestoin_pesonnels.xhtml"> <i
+					class="fa fa-group"></i> <span>Gestion personnels</span>
+			</a></li>
 
-			<li class="header">LABELS</li>
-			<li><a href=""><i class="fa fa-circle-o text-red"></i><span>Gestion
-						personnels</span></a></li>
-			<li><a href=""><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-			<li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
-		</ul>
-		</section> <!-- /.sidebar --> </aside>
+			<li><a href="Affectation.xhtml"> <i class="fa ion-card "></i>
+					<span>Gestion d'affectation</span>
+			</a></li>
 
-		<!-- Content Wrapper. Contains page content -->
-		<div class="content-wrapper">
+			<li><a href="Gestion_mecanicien.xhtml"> <i
+					class="fa fa-user"></i> <span>Gestion mecaniciens</span>
+			</a></li>
 
-			<h:form id="f1">
-				<p:growl id="growl" life="3000" />
-
+			<li><a href="Demandes.xhtml"> <i class="fa fa-file-text-o"></i>
+					<span>Gestion demandes</span>
+			</a></li></ul></section></aside>
+	       <div><h:form id="f1">
+				<p:growl id="growl" life="5000" />
 				<div align="center">
 					<h:outputText value="Liste Des Personnels"></h:outputText>
-					<br /> <br /> <br />
-					<div>
-						<div align="right">
+					<br/><br/><br/>
+				<div><div align="right">
 							<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
-								update=":f1:f2:idDialog"
+								update=":f2:idDialog1"
 								oncomplete="PF('dialogPersonnel').show()"
 								actionListener="#{personnelbean.Ajout()}" />
 						</div>
-
-						<p:dataTable var="p" value="#{personnelbean.pls}" border="1"
+						<p:dataTable var="p" value="#{personnelbean.pls}" border="0"
 							paginator="true" paginatorPosition="bottom"
 							paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
 							rows="10" 
-							filteredValue="#{personnelbean.filtrePersonnel}">
-							
-					
-					<p:column filterBy="#{p.matricule}" headerText="Matricule" filterMatchMode="contains">
-                    <h:outputText value="#{p.matricule}" />
-                     </p:column>		
-					<p:column width="10%">
-								<f:facet name="header">
-									<h:outputLabel value="CIN"
-										style="font-size:small;font-weight:bold;width:600px" />
-								</f:facet>
-								<h:outputText value=" #{p.cin}" />
+            				filteredValue="#{personnelbean.filtrePersonnel}" style="width :100%">
+				    
+				    <p:column filterBy="#{p.matricule}" 
+				    headerText="Chercher" filterMatchMode="contains">
+                    </p:column>		
+							<p:column headerText="CIN ">
+							<h:outputText value=" #{p.cin}" />
 							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Personnel"
-										style="font-size:small;font-weight:bold;width:600px" />
-								</f:facet>
-								<h:outputText value=" #{p.nom}-#{p.prenom}" />
-
+							<p:column headerText="Nom et Prenom ">
+							<h:outputText value=" #{p.nom}-#{p.prenom}" />
 							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Telephone"
-										style="font-size:small;font-weight:bold;width:600px" />
-								</f:facet>
-								<h:outputText value=" #{p.telephone}" />
-
+							<p:column headerText="Num° telephone">
+								 <h:outputText value=" #{p.telephone}" />
 							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Adresse"
-										style="font-size:small;font-weight:bold;width:600px" />
-								</f:facet>
+							<p:column headerText="Adress ">
 								<h:outputText value=" #{p.adresse}" />
-
 							</p:column>
-
 							<p:column style="width:20%">
 								<p:commandButton actionListener="#{personnelbean.Modifier(p)}"
-									update=":f1:f2:idDialog"
+									update=":f2:idDialog1"
 									oncomplete="PF('dialogPersonnel').show()" icon="ui-icon-pencil"
 									title="Modification" />
 								<p:commandButton actionListener="#{personnelbean.supprimer(p)}"
@@ -242,7 +312,6 @@
 								</p:commandButton>
 							</p:column>
 						</p:dataTable>
-
 						<p:confirmDialog global="true" showEffect="fade"
 							hideEffect="explode">
 							<p:commandButton value="Oui" type="button"
@@ -250,141 +319,240 @@
 							<p:commandButton value="Non" type="button"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 						</p:confirmDialog>
-
-						<h:form id="f2">
- 							<p:dialog id="idDialog" widgetVar="dialogPersonnel" modal="true"
+					</div>
+				</div>
+				<br />
+				<br />
+		</h:form></div>
+		
+		
+					 <h:form id="f2">
+					 <p:growl id="growl2" life="5000" />
+							<p:dialog id="idDialog1" widgetVar="dialogPersonnel" modal="true"
 								showHeader="false" closable="false" resizable="false">
 								<div>
-									<p:panel id="dialog" header="#{personnelbean.action} Personnel" >
-										<h:panelGrid columns="2" cellpadding="25px" >
+									<p:panel id="dialogP" header="#{personnelbean.action} Personnel" align="center">
+										<h:panelGrid columns="2" style="width:500px;padding-top:90px">
 											<p:outputLabel value="Nom :           " />
-											<p:inputText value="#{personnelbean.nom}" />
-
+											<p:inputText value="#{personnelbean.nom}" style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="Prenom :        " />
-											<p:inputText value="#{personnelbean.prenom}" />
-
+											<p:inputText value="#{personnelbean.prenom}"
+												style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="Date de naissance :    " />
 											<p:calendar id="date" value="#{personnelbean.dateNaissance}"
-												pattern="dd-MM-yyyy" mask="true" />
+												pattern="dd-MM-yyyy" mask="true" style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="Telephone : " />
-											<p:inputText value="#{personnelbean.telephone}" />
-
+											<p:inputText value="#{personnelbean.telephone}"
+												style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="GSM1 : " />
-											<p:inputText value="#{personnelbean.numero_tel1}" />
-
+											<p:inputText value="#{personnelbean.numero_tel1}"
+												style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="GSM2 : " />
-											<p:inputText value="#{personnelbean.numero_tel2}" />
+											<p:inputText value="#{personnelbean.numero_tel2}"
+												style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="CIN : " />
-											<p:inputText value="#{personnelbean.cin}" />
-
+											<p:inputText value="#{personnelbean.cin}" style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value=" Email: " />
-											<p:inputText value="#{personnelbean.email}" />
-
+											<p:inputText value="#{personnelbean.email}"
+												style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="Adresse : " />
-											<p:inputText value="#{personnelbean.adresse}" />
- 											<p:outputLabel value="Type Personnel : " />
-												<p:selectOneMenu value="#{personnelbean.numerotypeP}"
+											<p:inputText value="#{personnelbean.adresse}"
+												style="width:200px" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel value="Type Personnel : " />
+											<h:panelGrid columns="2" style="width:200px">
+											<p:selectOneMenu value="#{personnelbean.numerotypeP}"
+												panelStyle="width:180px" filter="true"
+												filterMatchMode="startsWith" effect="fade"
+												style="font-size:small;font-weight:bold;width:120%" id="type">
+												<f:selectItem itemLabel="--Selectioner--" itemValue="" />
+												<f:selectItems value="#{personnelbean.typepersonnels}"
+													var="p" itemLabel="#{p.nomTypeP}" itemValue="#{p.numeroTypeP}" />
+											</p:selectOneMenu>
+											<p:commandButton icon="ui-icon-plusthick"
+													update=":f2:idDialog5"
+													oncomplete="PF('dialogTypeP').show()"
+													actionListener="#{typepersonnelbean.ajout()}" />
+											
+										</h:panelGrid>			
+										<p:outputLabel value="Departement : " />
+											
+											<h:panelGrid columns="2" style="width:200px">
+											<p:selectOneMenu value="#{personnelbean.numerodepartement}"
+												panelStyle="width:180px" filter="true"
+												filterMatchMode="startsWith" effect="fade"
+												style="font-size:small;font-weight:bold;width:120%" id="d">
+												<f:selectItem itemLabel="--Selectioner--" itemValue="" />
+												<f:selectItems value="#{personnelbean.departements}" var="p"
+													itemLabel="#{p.nomDepartement}"
+													itemValue="#{p.numeroDepartement}" />
+											</p:selectOneMenu>
+											
+											<p:commandButton icon="ui-icon-plusthick"
+													update=":f2:idDialog4"
+													oncomplete="PF('dialogDepartement').show()"
+													actionListener="#{departementbean.Ajout()}" />
+											
+										</h:panelGrid>			
+										
+											<p:outputLabel value="Service : " />
+										<h:panelGrid columns="2" style="width:200px">
+											<p:selectOneMenu value="#{personnelbean.numeroservice}"
+												panelStyle="width:180px" filter="true"
+												filterMatchMode="startsWith" effect="fade"
+												style="font-size:small;font-weight:bold;width:120%" id="s">
+												<f:selectItem itemLabel="--Selectioner--" itemValue="" />
+												<f:selectItems value="#{personnelbean.services}" var="p"
+													itemLabel="#{p.nomService}" itemValue="#{p.numeroService}" />
+											</p:selectOneMenu>
+											<p:commandButton icon="ui-icon-plusthick"
+													update=":f2:idDialog3"
+													oncomplete="PF('dialogService').show()"
+													actionListener="#{servicebean.ajout()}" />
+										</h:panelGrid>			
+											
+												<p:outputLabel value="Compte : " />
+												
+											<h:panelGrid columns="2" style="width:200px">
+												<p:selectOneMenu value="#{personnelbean.numerocompte}"
 													panelStyle="width:180px" filter="true"
 													filterMatchMode="startsWith" effect="fade"
-													style="font-size:small;font-weight:bold">
-
+													style="font-size:small;font-weight:bold;width:120%" id="c" >
 													<f:selectItem itemLabel="--Selectioner--" itemValue="" />
-													<f:selectItems value="#{personnelbean.typepersonnels}"
-														var="p" itemLabel="#{p.nomTypeP}"
-														itemValue="#{p.numeroTypeP}" />
-												</p:selectOneMenu>
-
-												<p:outputLabel value="Departement : " />
-												<p:selectOneMenu value="#{personnelbean.numerodepartement}"
-													panelStyle="width:180px" filter="true"
-													filterMatchMode="startsWith" effect="fade"
-													style="font-size:small;font-weight:bold">
-
-													<f:selectItem itemLabel="--Selectioner--" itemValue="" />
-													<f:selectItems value="#{personnelbean.departements}"
-														var="p" itemLabel="#{p.nomDepartement}"
-														itemValue="#{p.numeroDepartement}" />
-												</p:selectOneMenu>
-
-												<p:outputLabel value="Service : " />
-												<p:selectOneMenu value="#{personnelbean.numeroservice}"
-													panelStyle="width:180px" filter="true"
-													filterMatchMode="startsWith" effect="fade"
-													style="font-size:small;font-weight:bold">
-
-													<f:selectItem itemLabel="--Selectioner--" itemValue="" />
-													<f:selectItems value="#{personnelbean.services}" var="p"
-														itemLabel="#{p.nomService}" itemValue="#{p.numeroService}" />
-												</p:selectOneMenu>
-										 </h:panelGrid>
-										<h:panelGrid columns="4" cellpadding="5">
-										 <p:outputLabel value="Compte : " />
-											   <p:selectOneMenu value="#{personnelbean.numerocompte}"
-													filter="true"
-													filterMatchMode="startsWith" effect="fade"
-													style="font-size:small;font-weight:bold" id="L">
- 													<f:selectItem itemLabel="--Selectioner--" itemValue="" />
 													<f:selectItems value="#{personnelbean.comptes}" var="p"
 														itemLabel="#{p.login}-#{p.motDePasse}"
 														itemValue="#{p.numeroCompte}" />
 												</p:selectOneMenu>
-												<div><p:commandButton icon="ui-icon-plusthick"
-														update=":f1:f2:f3:idDialog"
-														oncomplete="PF('dialogcompte').show()"
-														actionListener="#{connectBean.ajout()}" />
-												</div>
-										  </h:panelGrid>
-										<h:panelGrid columns="2">
+												<p:commandButton icon="ui-icon-plusthick"
+													update=":f2:idDialog2"
+													oncomplete="PF('dialogcompte').show()"
+													actionListener="#{connectBean.ajout()}" />
+											</h:panelGrid>
+										</h:panelGrid>
+										<h:panelGrid columns="2" >
 											<p:commandButton value="Valider" icon="ui-icon-check"
 												oncomplete="PF('dialogPersonnel').hide();"
-												action="#{personnelbean.Validation()}" update=":f1" />
+												action="#{personnelbean.Validation()}" update=":f2:growl2" />
 											<p:commandButton value="Annuler"
 												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{personnelbean.closeDiag()}" update=":f1"
+												actionListener="#{personnelbean.closeDiag()}" update=":f2"
 												oncomplete="PF('dialogPersonnel').hide();" />
 										</h:panelGrid>
 									</p:panel>
 								</div>
 							</p:dialog>
-							<h:form id="f3">
-								<p:dialog id="idDialog" widgetVar="dialogcompte" modal="true"
+							
+							
+								<p:dialog id="idDialog2" widgetVar="dialogcompte" modal="true"
 									showHeader="false" closable="false" resizable="false">
-
-									<p:panel id="dialog" header="#{connectBean.action} Compte">
+									<p:panel id="dialogC" header="#{connectBean.action} Compte">
 										<h:panelGrid columns="2">
 											<p:outputLabel value="Login : " />
 											<p:inputText value="#{connectBean.login}" />
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="Mot de passe : " />
 											<p:inputText value="#{connectBean.motPasse}" />
 										</h:panelGrid>
 										<h:panelGrid columns="2">
 											<p:commandButton value="Valider" icon="ui-icon-check"
 												oncomplete="PF('dialogcompte').hide();"
-												action="#{connectBean.valider()}" update=":f1:f2:L" />
+												action="#{connectBean.valider()}" update=":f2:c" />
 											<p:commandButton value="Annuler"
 												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{connectBean.closeDiag()}" update=":f1:f2"
+												actionListener="#{connectBean.closeDiag()}" update=":f2"
 												oncomplete="PF('dialogcompte').hide();" />
 										</h:panelGrid>
 									</p:panel>
 								</p:dialog>
-							</h:form>
-						</h:form>
-
-					</div>
-				</div>
-				<br />
-				<br />
-			</h:form>
-		</div>
-		<!-- /.content-wrapper -->
-
-
-		<!-- Control Sidebar -->
-		<!-- /.control-sidebar -->
-		<!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-		<div class="control-sidebar-bg"></div>
-	</div>
+							
+							<p:dialog id="idDialog3" widgetVar="dialogService" modal="true"
+									showHeader="false" closable="false" resizable="false">
+									<p:panel id="dialogS" header="#{servicebean.action} Service">
+										<h:panelGrid>
+											
+											<p:outputLabel value="Nom Service: " />
+											<p:inputText value="#{servicebean.nom_Service}" />
+											
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
+											
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<p:commandButton value="Valider" icon="ui-icon-check"
+												oncomplete="PF('dialogService').hide();"
+												action="#{servicebean.valider()}" update=":f2:s" />
+											<p:commandButton value="Annuler"
+												icon="ui-icon-arrowreturnthick-1-n"
+												actionListener="#{servicebean.ClosDig()}" update=":f2"
+												oncomplete="PF('dialogService').hide();" />
+										</h:panelGrid>
+									</p:panel>
+								</p:dialog>
+								
+								<p:dialog id="idDialog4" widgetVar="dialogDepartement" modal="true"
+									showHeader="false" closable="false" resizable="false">
+									<p:panel id="dialogD" header="#{departementbean.action} Departement">
+										<h:panelGrid>
+											
+											<p:outputLabel value="Nom Departement: " />
+											<p:inputText value="#{departementbean.nomDepartement}" />
+											
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
+											
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<p:commandButton value="Valider" icon="ui-icon-check"
+												oncomplete="PF('dialogDepartement').hide();"
+												action="#{departementbean.Valider()}" update=":f2:d" />
+											<p:commandButton value="Annuler"
+												icon="ui-icon-arrowreturnthick-1-n"
+												actionListener="#{departementbean.ClosDig()}" update=":f2"
+												oncomplete="PF('dialogDepartement').hide();" />
+										</h:panelGrid>
+									</p:panel>
+								</p:dialog>
+							<p:dialog id="idDialog5" widgetVar="dialogTypeP" modal="true"
+									showHeader="false" closable="false" resizable="false">
+									<p:panel id="dialogTypeP" header="#{typepersonnelbean.action} Type Personnel">
+										<h:panelGrid>
+											
+											<p:outputLabel value="Nom Type Personnel: " />
+											<p:inputText value="#{typepersonnelbean.nom_typeP}" />
+											
+											<p:outputLabel></p:outputLabel>
+											<p:outputLabel></p:outputLabel>
+											
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<p:commandButton value="Valider" icon="ui-icon-check"
+												oncomplete="PF('dialogTypeP').hide();"
+												action="#{typepersonnelbean.Valider()}" update=":f2:type" />
+											<p:commandButton value="Annuler"
+												icon="ui-icon-arrowreturnthick-1-n"
+												actionListener="#{typepersonnelbean.ClosDig()}" update=":f2"
+												oncomplete="PF('dialogTypeP').hide();" />
+										</h:panelGrid>
+									</p:panel>
+								</p:dialog>
+						</h:form></div>
 </h:body>
 </html>

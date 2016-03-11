@@ -72,18 +72,21 @@ public class ConnectBean {
 			faces.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_WARN, "erreur",
 					"Vous dever remplire svp tout les champs "));
+			login=null;
+			motPasse=null;
 	    }
 		else if (login.equals("admin") && motPasse.equals("admin")) {
-			return "/tableau_bord.xhtml";
+			return "/Templette.xhtml";
 		}
 		else if (existeCompte(login, motPasse)) {
-			return "/tableau_bord.xhtml";
+			return "/Templette.xhtml";
 		} 
 		else
 			faces.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, "erreur",
 					"Les informations saisie sont invalides "));
-		return "/Index.xhtml";
+					login=null;
+					return motPasse=null;
 	}
 
 	public void valider() {
