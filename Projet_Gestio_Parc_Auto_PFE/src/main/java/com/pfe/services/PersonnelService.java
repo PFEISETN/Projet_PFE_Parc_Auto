@@ -92,7 +92,7 @@ public void AjouterPersonnel(Personnel personnel) {
 		Transaction tx = null;
 		try { 
 			tx = session.beginTransaction();
-			liste = dao.findAll();
+			liste = dao.findAllWithJoin();
 			tx.commit();
 
 		} catch (RuntimeException ex) {

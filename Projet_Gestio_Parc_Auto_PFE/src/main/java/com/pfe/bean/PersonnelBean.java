@@ -2,12 +2,10 @@ package com.pfe.bean;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import com.pfe.persistance.Compte;
 import com.pfe.persistance.Departement;
 import com.pfe.persistance.Personnel;
@@ -18,7 +16,6 @@ import com.pfe.services.DepartementService;
 import com.pfe.services.PersonnelService;
 import com.pfe.services.ServiceS;
 import com.pfe.services.TypePersonnelService;
-
 @ManagedBean(name = "personnelbean")
 @SessionScoped
 public class PersonnelBean {
@@ -39,6 +36,17 @@ public class PersonnelBean {
 	private Integer numeroservice;
 	private Integer numerotypeP;
 	private String action;
+	
+private Personnel selectedperonnel;
+	
+
+	public Personnel getSelectedperonnel() {
+		return selectedperonnel;
+	}
+
+	public void setSelectedperonnel(Personnel selectedperonnel) {
+		this.selectedperonnel = selectedperonnel;
+	}
 
 	public String getNumero_tel1() {
 		return numero_tel1;
@@ -254,11 +262,10 @@ public class PersonnelBean {
 		cin = null;
 		email = null;
 		adresse = null;
-		date_nai = null;
-		numerocompte = null;
+		dateNaissance=null;
 		numerodepartement = null;
 		numeroservice = null;
-		numerotypeP = null;
+     	numerotypeP = null;
 		numero_tel1=null;
 		numero_tel2=null;
 		action = "Ajouter";
@@ -274,90 +281,84 @@ public class PersonnelBean {
 		adresse = p.getAdresse();
 		numero_tel1=p.getNumero_tel1();
 		numero_tel2=p.getNumero_tel2();
-		if (p.getCompte() != null)
-			numerocompte = p.getCompte().getNumeroCompte();
-
-		if (p.getDepartement() != null)
+        if (p.getDepartement() != null)
 			numerodepartement = p.getDepartement().getNumeroDepartement();
 
 		if (p.getService() != null)
 			numeroservice = p.getService().getNumeroService();
 
-		if (p.getTypepersonnel() != null)
-			numerotypeP = p.getTypepersonnel().getNumeroTypeP();
+	    if (p.getTypepersonnel() != null)
+		numerotypeP = p.getTypepersonnel().getNumeroTypeP();
 
 		dateNaissance = p.getDateNaissance();
 		action="Modification";
 	}
-
 	public void Validation()
 	 { 
 		FacesContext faces = FacesContext.getCurrentInstance();
 		   Personnel p=new Personnel();
-		   if((nom =="")||(prenom =="")||(email =="")||(adresse =="")
-				||(cin =="")||(telephone=="")||(numero_tel1=="")||(numero_tel2==""))
+		   if((nom =="")||(prenom =="")||(cin ==""))
 		   { 
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-						"vous dever remplire tous les champs !! ", "")); 
+						"vous dever remplire tous les champs obligatoire !! ", "")); 
 		   }
-		   else if ((telephone.length() > 8)||((telephone.length() < 8)))
+		   if(nom.matches("[+-]?\\d*(\\.\\d+)?"))
+		   { 
+			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Ce nom est invalide !! ", "")); 
+		   }
+		   if(prenom.matches("[+-]?\\d*(\\.\\d+)?"))
+		   { 
+			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+						"Ce prenom est invalide !! ", "")); 
+		   }
+		   if ((telephone=="")&&((numero_tel1=="")&&(numero_tel2=="")))
 		   {  
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-					"Le numero du telephone est invalide !! ", "")); 
+					"Vous dever avoir au minimum un N° GSM !! ", "")); 
 		   }
-//		   else if ((numero_tel1.length() > 8)||((numero_tel1.length() < 8)))
-//		   {  
-//			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-//					"Le numero du telephone1 est invalide !! ", "")); 
-//		   }
-//		   else if ((numero_tel2.length() > 8)||((numero_tel2.length() < 8)))
-//		   {  
-//			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-//					"Le numero du telephone2 est invalide !! ", "")); 
-//		   }
-		   else if ((cin.length() > 8)||((cin.length() < 8)))
+ 
+         if ((cin.length() > 8)||((cin.length() < 8)))
 		   {  
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Le numero du carte d'identité est invalide !! ", "")); 
 		   }
-		   else
-		 {   
+         else if (email.matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+")) 
+			{
+		    p.setEmail(email);
 			p.setNom(nom);
 			p.setPrenom(prenom);
-			p.setEmail(email);
 			p.setCin(cin);
 			p.setTelephone(telephone);
 			p.setAdresse(adresse);
 			p.setNumero_tel1(numero_tel1);
 			p.setNumero_tel2(numero_tel2);
-			Compte cmpt = new Compte();
-			cmpt.setNumeroCompte(numerocompte);
 			Departement dep = new Departement();
 			dep.setNumeroDepartement(numerodepartement);
 			Service s = new Service();
 			s.setNumeroService(numeroservice);
-			Typepersonnel typeP = new Typepersonnel();
-			typeP.setNumeroTypeP(numerotypeP);
-			p.setDateNaissance(dateNaissance);
-			p.setCompte(cmpt);
+				Typepersonnel typeP = new Typepersonnel();
+				typeP.setNumeroTypeP(numerotypeP);
+				p.setDateNaissance(dateNaissance);
+			p.setEmail(email);
 			p.setDepartement(dep);
 			p.setService(s);
 			p.setTypepersonnel(typeP);
-		  	if(action!= null && action.equals("Ajouter")) 
+			 if(action!= null && action.equals("Ajouter")) 
 			  { 
 		  		new PersonnelService().AjouterPersonnel(p);
 		  		faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Personne ajoutée avec succès.", "")); 
 			  }
-			if (action != null && action.equals("Modification")) {
+			 else  if (action != null && action.equals("Modification")) {
 					p.setMatricule(matricule);
 					new PersonnelService().modifierPersonnel(p);
 					faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 							"Personne modifiée avec succès.", ""));
 			  }
-		 }
-	  }
-
+			}
+        else faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"l'adress Email est invalide .", "")); 
+	 }
 	public void supprimer(Personnel p) {
 		PersonnelService ser = new PersonnelService();
 		ser.supprimerPersonnel(p);
@@ -379,10 +380,9 @@ public class PersonnelBean {
 		cin = null;
 		email = null;
 		adresse = null;
-		numerocompte = null;
 		numerodepartement = null;
-		numeroservice = null;
-		numerotypeP = null;
+	    numeroservice = null;
+ 		numerotypeP = null;
 		numero_tel1=null;
 		numero_tel2=null;
 

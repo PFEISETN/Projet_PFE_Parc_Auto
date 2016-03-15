@@ -106,6 +106,11 @@ public class ConnectBean {
 		motPasse = null;	
 	}
 	
+ public void annuler()
+   {
+	    login = null;
+		motPasse = null;
+	}
 	public String init() {
 		login = null;
 		motPasse = null;

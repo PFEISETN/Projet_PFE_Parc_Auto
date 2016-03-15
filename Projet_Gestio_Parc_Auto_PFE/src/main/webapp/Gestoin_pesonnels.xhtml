@@ -8,27 +8,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Parc Auto</title>
-	<meta
-		content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-		name='viewport'></meta>
-	<meta name="description" content="Developed By M Abdur Rokib Promy"></meta>
-	<meta name="keywords"
-		content="Admin, Bootstrap 3, Template, Theme, Responsive"></meta>
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
-	<link href="css/jvectormap/jquery-jvectormap-1.2.2.css"
-		rel="stylesheet" type="text/css" />
-	<link href="css/datepicker/datepicker3.css" rel="stylesheet"
-		type="text/css" />
-	<link href="css/daterangepicker/daterangepicker-bs3.css"
-		rel="stylesheet" type="text/css" />
+	<link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+	<link href="css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+	<link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 	<link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
-	<link href='http://fonts.googleapis.com/css?family=Lato'
-		rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	    <style type="text/css"></style>
+	<style type="text/css"></style>
     <style >
     .ui-growl {
     position:absolute;
@@ -267,32 +257,40 @@
 					<span>Gestion demandes</span>
 			</a></li></ul></section></aside>
 	       <div><h:form id="f1">
-				<p:growl id="growl" life="5000" />
+	       <p:growl id="growl" life="5000" />
 				<div align="center">
-					<h:outputText value="Liste Des Personnels"></h:outputText>
-					<br/><br/><br/>
-				<div><div align="right">
+			<h:outputText value="Liste Des Personnels"
+				style="font-size:36px;font-weight:bold"></h:outputText>
+			<br /> <br /> <br />
+			<div><div align="right">
 							<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
 								update=":f2:idDialog1"
 								oncomplete="PF('dialogPersonnel').show()"
 								actionListener="#{personnelbean.Ajout()}" />
 						</div>
-						<p:dataTable var="p" value="#{personnelbean.pls}" border="0"
+						<div align="right">
+						<p:dataTable var="p" value="#{personnelbean.pls}" border="0" widgetVar="personnelsTable"
 							paginator="true" paginatorPosition="bottom"
 							paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-							rows="10" 
-            				filteredValue="#{personnelbean.filtrePersonnel}" style="width :100%">
-				    
+							rows="10" styleClass="DataTable" 
+            				filteredValue="#{personnelbean.filtrePersonnel}" style="width :80%" id="data">
+				    <f:facet name="header">
+            
+                <h:outputText value="Chercher tous personnels :" />
+                <p:inputText id="globalFilter" onkeyup="PF('personnelsTable').filter()"  style="width:150px" placeholder="saisie valeur"/>
+                <p:commandButton  icon="ui-icon-search"/>
+                 </f:facet>
+ 
 				    <p:column filterBy="#{p.matricule}" 
 				    headerText="Chercher" filterMatchMode="contains">
                     </p:column>		
 							<p:column headerText="CIN ">
 							<h:outputText value=" #{p.cin}" />
 							</p:column>
-							<p:column headerText="Nom et Prenom ">
+							<p:column headerText="Personnel ">
 							<h:outputText value=" #{p.nom}-#{p.prenom}" />
 							</p:column>
-							<p:column headerText="Num° telephone">
+							<p:column headerText="N° telephone">
 								 <h:outputText value=" #{p.telephone}" />
 							</p:column>
 							<p:column headerText="Adress ">
@@ -303,15 +301,22 @@
 									update=":f2:idDialog1"
 									oncomplete="PF('dialogPersonnel').show()" icon="ui-icon-pencil"
 									title="Modification" />
+									
+									<p:commandButton actionListener="#{connectBean.ajout()}"
+									update=":f2:idDialogCompte"
+									oncomplete="PF('dialogcompte').show()" icon="ui-icon-plus"
+									 />
+									
 								<p:commandButton actionListener="#{personnelbean.supprimer(p)}"
 									icon="ui-icon-trash" title="Suppression Personnel"
 									update=":f1,:f1:growl">
-									<p:confirm header="Suppression Personnle"
+										<p:confirm header="Suppression Personnle"
 										message="Voulez-vous vraiment supprimer cette Personnel ?"
 										icon="ui-icon-alert" />
+										
 								</p:commandButton>
-							</p:column>
-						</p:dataTable>
+                          </p:column>
+						</p:dataTable></div>
 						<p:confirmDialog global="true" showEffect="fade"
 							hideEffect="explode">
 							<p:commandButton value="Oui" type="button"
@@ -324,127 +329,95 @@
 				<br />
 				<br />
 		</h:form></div>
-		
-		
-					 <h:form id="f2">
+		             <h:form id="f2" >
 					 <p:growl id="growl2" life="5000" />
-							<p:dialog id="idDialog1" widgetVar="dialogPersonnel" modal="true"
-								showHeader="false" closable="false" resizable="false">
+					 <p:dialog id="idDialog1" widgetVar="dialogPersonnel" modal="true"
+								showHeader="false" closable="false" resizable="false"  >
 								<div>
 									<p:panel id="dialogP" header="#{personnelbean.action} Personnel" align="center">
 										<h:panelGrid columns="2" style="width:500px;padding-top:90px">
-											<p:outputLabel value="Nom :           " />
-											<p:inputText value="#{personnelbean.nom}" style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="Prenom :        " />
-											<p:inputText value="#{personnelbean.prenom}"
-												style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="Date de naissance :    " />
+										<p:tabView id="tabv" orientation="left">
+								<p:tab title="info personnels">
+									<h:panelGrid columns="2" cellpadding="3">
+										<p:outputLabel value="CIN : " />
+										<p:inputText value="#{personnelbean.cin}" style="width:200px" />
+										
+										<p:outputLabel value="Nom :           " />
+										<p:inputText value="#{personnelbean.nom}" style="width:200px"/>
+										<p:outputLabel value="Prenom :        " />
+										<p:inputText value="#{personnelbean.prenom}"
+											style="width:200px" />
+										<p:outputLabel value="Date de naissance :    " />
 											<p:calendar id="date" value="#{personnelbean.dateNaissance}"
 												pattern="dd-MM-yyyy" mask="true" style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="Telephone : " />
-											<p:inputText value="#{personnelbean.telephone}"
-												style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="GSM1 : " />
-											<p:inputText value="#{personnelbean.numero_tel1}"
-												style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="GSM2 : " />
-											<p:inputText value="#{personnelbean.numero_tel2}"
-												style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="CIN : " />
-											<p:inputText value="#{personnelbean.cin}" style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value=" Email: " />
-											<p:inputText value="#{personnelbean.email}"
-												style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="Adresse : " />
-											<p:inputText value="#{personnelbean.adresse}"
-												style="width:200px" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel value="Type Personnel : " />
-											<h:panelGrid columns="2" style="width:200px">
-											<p:selectOneMenu value="#{personnelbean.numerotypeP}"
-												panelStyle="width:180px" filter="true"
+									</h:panelGrid>
+								</p:tab>
+								<p:tab title="Contact ">
+									<h:panelGrid columns="2" cellpadding="3">
+									   <p:outputLabel value="Telephone : "/>
+                                       <p:inputMask id="telephone" value="#{personnelbean.telephone}" mask="(+999) 99-999-999"
+											style="width:200px" />
+										<p:outputLabel value="GSM1 : " />
+										<p:inputMask id="numero_tel1" value="#{personnelbean.numero_tel1}"
+											style="width:200px" mask="(+999) 99-999-999"/>
+										<p:outputLabel value="GSM2 : " />
+										<p:inputMask id="numero_tel2" value="#{personnelbean.numero_tel2}"
+											style="width:200px" mask="(+999) 99-999-999"/>
+										<p:outputLabel value=" Email: " />
+										<p:inputText value="#{personnelbean.email}"
+											style="width:200px" />
+										<p:outputLabel value="Adresse : " />
+										<p:inputText value="#{personnelbean.adresse}"
+											style="width:200px" />
+									</h:panelGrid>
+									
+								</p:tab>
+								<p:tab title="Autre informations">
+									<h:panelGrid columns="3" cellpadding="9">
+										<p:outputLabel value="Type : " />
+										<p:selectOneMenu value="#{personnelbean.numerotypeP}" id="type"
+										panelStyle="width:100px" filter="true"
 												filterMatchMode="startsWith" effect="fade"
-												style="font-size:small;font-weight:bold;width:120%" id="type">
-												<f:selectItem itemLabel="--Selectioner--" itemValue="" />
-												<f:selectItems value="#{personnelbean.typepersonnels}"
+												style="font-size:small;font-weight:bold;width:106%">
+										 <f:selectItem itemLabel="---Selectionner---" itemValue="" noSelectionOption="true"/>
+							            <f:selectItems value="#{personnelbean.typepersonnels}"
 													var="p" itemLabel="#{p.nomTypeP}" itemValue="#{p.numeroTypeP}" />
-											</p:selectOneMenu>
-											<p:commandButton icon="ui-icon-plusthick"
-													update=":f2:idDialog5"
+										</p:selectOneMenu>
+										<p:commandButton icon="ui-icon-plusthick"
+													update=":f2:idDialogT"
 													oncomplete="PF('dialogTypeP').show()"
 													actionListener="#{typepersonnelbean.ajout()}" />
-											
-										</h:panelGrid>			
-										<p:outputLabel value="Departement : " />
-											
-											<h:panelGrid columns="2" style="width:200px">
-											<p:selectOneMenu value="#{personnelbean.numerodepartement}"
-												panelStyle="width:180px" filter="true"
+										  <p:outputLabel value="Departement : "/>
+										  <p:selectOneMenu value="#{personnelbean.numerodepartement}"
+												panelStyle="width:100px" filter="true"
 												filterMatchMode="startsWith" effect="fade"
-												style="font-size:small;font-weight:bold;width:120%" id="d">
-												<f:selectItem itemLabel="--Selectioner--" itemValue="" />
+												style="font-size:small;font-weight:bold;width:106%" id="Dep">
+												<f:selectItem itemLabel="---Selectioner---" itemValue="" noSelectionOption="false"/>
 												<f:selectItems value="#{personnelbean.departements}" var="p"
 													itemLabel="#{p.nomDepartement}"
 													itemValue="#{p.numeroDepartement}" />
 											</p:selectOneMenu>
-											
 											<p:commandButton icon="ui-icon-plusthick"
-													update=":f2:idDialog4"
+													update=":f2:idDialogD"
 													oncomplete="PF('dialogDepartement').show()"
 													actionListener="#{departementbean.Ajout()}" />
-											
-										</h:panelGrid>			
-										
-											<p:outputLabel value="Service : " />
-										<h:panelGrid columns="2" style="width:200px">
-											<p:selectOneMenu value="#{personnelbean.numeroservice}"
-												panelStyle="width:180px" filter="true"
+										<p:outputLabel value="Service : " />
+										<p:selectOneMenu value="#{personnelbean.numeroservice}"
+												panelStyle="width:100px" filter="true"
 												filterMatchMode="startsWith" effect="fade"
-												style="font-size:small;font-weight:bold;width:120%" id="s">
+												style="font-size:small;font-weight:bold;width:106%" id="Serv">
 												<f:selectItem itemLabel="--Selectioner--" itemValue="" />
 												<f:selectItems value="#{personnelbean.services}" var="p"
 													itemLabel="#{p.nomService}" itemValue="#{p.numeroService}" />
 											</p:selectOneMenu>
 											<p:commandButton icon="ui-icon-plusthick"
-													update=":f2:idDialog3"
+													update=":f2:idDialogServ"
 													oncomplete="PF('dialogService').show()"
 													actionListener="#{servicebean.ajout()}" />
-										</h:panelGrid>			
-											
-												<p:outputLabel value="Compte : " />
-												
-											<h:panelGrid columns="2" style="width:200px">
-												<p:selectOneMenu value="#{personnelbean.numerocompte}"
-													panelStyle="width:180px" filter="true"
-													filterMatchMode="startsWith" effect="fade"
-													style="font-size:small;font-weight:bold;width:120%" id="c" >
-													<f:selectItem itemLabel="--Selectioner--" itemValue="" />
-													<f:selectItems value="#{personnelbean.comptes}" var="p"
-														itemLabel="#{p.login}-#{p.motDePasse}"
-														itemValue="#{p.numeroCompte}" />
-												</p:selectOneMenu>
-												<p:commandButton icon="ui-icon-plusthick"
-													update=":f2:idDialog2"
-													oncomplete="PF('dialogcompte').show()"
-													actionListener="#{connectBean.ajout()}" />
+								
 											</h:panelGrid>
+									</p:tab>
+							</p:tabView>	
 										</h:panelGrid>
 										<h:panelGrid columns="2" >
 											<p:commandButton value="Valider" icon="ui-icon-check"
@@ -458,101 +431,81 @@
 									</p:panel>
 								</div>
 							</p:dialog>
-							
-							
-								<p:dialog id="idDialog2" widgetVar="dialogcompte" modal="true"
+							<p:dialog id="idDialogT" widgetVar="dialogTypeP" modal="true"
+						showHeader="false" closable="false" resizable="false">
+						<p:panel id="dialogTypeP"
+							header="#{typepersonnelbean.action} Type Personnel">
+							<h:panelGrid>
+								<p:outputLabel value="Type Personnel: " />
+								<p:inputText value="#{typepersonnelbean.nom_typeP}" />
+							</h:panelGrid>
+							<h:panelGrid columns="2">
+								<p:commandButton value="Valider" icon="ui-icon-check"
+									oncomplete="PF('dialogTypeP').hide();"
+									action="#{typepersonnelbean.Valider()}"  update=":f2:tabv:type"/>
+								<p:commandButton value="Annuler"
+									icon="ui-icon-arrowreturnthick-1-n"
+									actionListener="#{typepersonnelbean.ClosDig()}" 
+									oncomplete="PF('dialogTypeP').hide();" />
+							</h:panelGrid>
+						</p:panel>
+					</p:dialog>
+					<p:dialog id="idDialogD" widgetVar="dialogDepartement" modal="true"
+									showHeader="false" closable="false" resizable="false">
+									<p:panel id="dialogD" header="#{departementbean.action} Departement">
+										<h:panelGrid>
+											<p:outputLabel value="Nom Departement: " />
+											<p:inputText value="#{departementbean.nomDepartement}" />
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<p:commandButton value="Valider" icon="ui-icon-check"
+												oncomplete="PF('dialogDepartement').hide();"
+												action="#{departementbean.Valider()}" update=":f2:tabv:Dep" />
+											<p:commandButton value="Annuler"
+												icon="ui-icon-arrowreturnthick-1-n"
+												actionListener="#{departementbean.ClosDig()}"
+												oncomplete="PF('dialogDepartement').hide();" />
+										</h:panelGrid>
+									</p:panel>
+				            </p:dialog>
+					
+				   <p:dialog id="idDialogServ" widgetVar="dialogService" modal="true"
+									showHeader="false" closable="false" resizable="false">
+									<p:panel id="dialogS" header="#{servicebean.action} Service">
+										<h:panelGrid>
+											<p:outputLabel value="Nom Service: " />
+											<p:inputText value="#{servicebean.nom_Service}" />
+										</h:panelGrid>
+										<p:commandButton value="Valider" icon="ui-icon-check"
+												oncomplete="PF('dialogService').hide();"
+												action="#{servicebean.valider()}" update=":f2:tabv:Serv" />
+											<p:commandButton value="Annuler"
+												icon="ui-icon-arrowreturnthick-1-n"
+												actionListener="#{servicebean.ClosDig()}"
+												oncomplete="PF('dialogService').hide();" />
+									</p:panel>
+				 </p:dialog>
+				 <p:dialog id="idDialogCompte" widgetVar="dialogcompte" modal="true"
 									showHeader="false" closable="false" resizable="false">
 									<p:panel id="dialogC" header="#{connectBean.action} Compte">
 										<h:panelGrid columns="2">
 											<p:outputLabel value="Login : " />
 											<p:inputText value="#{connectBean.login}" />
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
 											<p:outputLabel value="Mot de passe : " />
 											<p:inputText value="#{connectBean.motPasse}" />
 										</h:panelGrid>
 										<h:panelGrid columns="2">
 											<p:commandButton value="Valider" icon="ui-icon-check"
 												oncomplete="PF('dialogcompte').hide();"
-												action="#{connectBean.valider()}" update=":f2:c" />
+												action="#{connectBean.valider()}"/>
 											<p:commandButton value="Annuler"
 												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{connectBean.closeDiag()}" update=":f2"
+												actionListener="#{connectBean.closeDiag()}"
 												oncomplete="PF('dialogcompte').hide();" />
 										</h:panelGrid>
 									</p:panel>
 								</p:dialog>
-							
-							<p:dialog id="idDialog3" widgetVar="dialogService" modal="true"
-									showHeader="false" closable="false" resizable="false">
-									<p:panel id="dialogS" header="#{servicebean.action} Service">
-										<h:panelGrid>
-											
-											<p:outputLabel value="Nom Service: " />
-											<p:inputText value="#{servicebean.nom_Service}" />
-											
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											
-										</h:panelGrid>
-										<h:panelGrid columns="2">
-											<p:commandButton value="Valider" icon="ui-icon-check"
-												oncomplete="PF('dialogService').hide();"
-												action="#{servicebean.valider()}" update=":f2:s" />
-											<p:commandButton value="Annuler"
-												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{servicebean.ClosDig()}" update=":f2"
-												oncomplete="PF('dialogService').hide();" />
-										</h:panelGrid>
-									</p:panel>
-								</p:dialog>
-								
-								<p:dialog id="idDialog4" widgetVar="dialogDepartement" modal="true"
-									showHeader="false" closable="false" resizable="false">
-									<p:panel id="dialogD" header="#{departementbean.action} Departement">
-										<h:panelGrid>
-											
-											<p:outputLabel value="Nom Departement: " />
-											<p:inputText value="#{departementbean.nomDepartement}" />
-											
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											
-										</h:panelGrid>
-										<h:panelGrid columns="2">
-											<p:commandButton value="Valider" icon="ui-icon-check"
-												oncomplete="PF('dialogDepartement').hide();"
-												action="#{departementbean.Valider()}" update=":f2:d" />
-											<p:commandButton value="Annuler"
-												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{departementbean.ClosDig()}" update=":f2"
-												oncomplete="PF('dialogDepartement').hide();" />
-										</h:panelGrid>
-									</p:panel>
-								</p:dialog>
-							<p:dialog id="idDialog5" widgetVar="dialogTypeP" modal="true"
-									showHeader="false" closable="false" resizable="false">
-									<p:panel id="dialogTypeP" header="#{typepersonnelbean.action} Type Personnel">
-										<h:panelGrid>
-											
-											<p:outputLabel value="Nom Type Personnel: " />
-											<p:inputText value="#{typepersonnelbean.nom_typeP}" />
-											
-											<p:outputLabel></p:outputLabel>
-											<p:outputLabel></p:outputLabel>
-											
-										</h:panelGrid>
-										<h:panelGrid columns="2">
-											<p:commandButton value="Valider" icon="ui-icon-check"
-												oncomplete="PF('dialogTypeP').hide();"
-												action="#{typepersonnelbean.Valider()}" update=":f2:type" />
-											<p:commandButton value="Annuler"
-												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{typepersonnelbean.ClosDig()}" update=":f2"
-												oncomplete="PF('dialogTypeP').hide();" />
-										</h:panelGrid>
-									</p:panel>
-								</p:dialog>
-						</h:form></div>
+							</h:form></div>
+	    <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </h:body>
 </html>

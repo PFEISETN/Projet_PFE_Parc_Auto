@@ -364,6 +364,9 @@
 					</p:column>
 					
 					<p:column style="width:20%">
+						<p:commandButton update=":f1:MecanicienDetail" oncomplete="PF('MecanicienDialog').show()" icon="ui-icon-circle-zoomin" title="View">
+                          <f:setPropertyActionListener value="#{m}" target="#{mecanicienbean.selectedMecanicien}" />
+                          </p:commandButton>
 						<p:commandButton actionListener="#{mecanicienbean.Modifier(m)}"
 							update=":f1:f2:idDialog"
 							oncomplete="PF('dialogMecanicien').show()" icon="ui-icon-pencil"
@@ -377,6 +380,27 @@
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
+
+     <p:dialog header="Mecanicien Info" widgetVar="MecanicienDialog" 
+     modal="false" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="MecanicienDetail" >
+            <h:panelGrid  columns="2" rendered="#{not empty mecanicienbean.selectedMecanicien}" columnClasses="label,value">
+         
+                <h:outputText value="N° mecanicien " />
+                <h:outputText value="#{mecanicienbean.selectedMecanicien.numero_mec}" />
+ 
+                <h:outputText value="Nom  Personnel: " />
+                <h:outputText value="#{mecanicienbean.selectedMecanicien.nom_mecanicien}" />
+ 
+                <h:outputText value="Telephone : " />
+                <h:outputText value="#{mecanicienbean.selectedMecanicien.telephone}" />
+                
+                <h:outputText value="Adresse : " />
+                <h:outputText value="#{mecanicienbean.selectedMecanicien.adresse}" />
+            
+            </h:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
 
 				<p:confirmDialog global="true" showEffect="fade"
 					hideEffect="explode">

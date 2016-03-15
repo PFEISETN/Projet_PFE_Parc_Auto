@@ -12,6 +12,7 @@
 	<link href="assets/css/style.css" rel="stylesheet" />
 	<link href="assets/css/style-responsive.css" rel="stylesheet" />
 	<title>Gestion parc Automobile</title>
+	<style></style>
 </h:head>
 <h:body>
 	<div id="login-page">
@@ -38,7 +39,7 @@
 							<p:outputLabel></p:outputLabel>
 							<p:commandButton value="Connecter " 
 								action="#{connectBean.connecter()}" icon="ui-icon-key"
-								update="growl" ajax="false" />
+								update="growl" ajax="false"  />
 						</h:panelGrid>
 					</h:form>
 				</div>
@@ -50,7 +51,7 @@
 	<script type="text/javascript"
 		src="assets/js/jquery.backstretch.min.js"></script>
 	<script>
-        $.backstretch("assets/img/back.png", {speed: 500});
+        $.backstretch("assets/img/car.jpg", {speed: 500});
     </script>
 </h:body>
 </html>

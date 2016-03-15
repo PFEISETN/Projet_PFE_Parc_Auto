@@ -18,11 +18,24 @@ public class MecanicienBean {
 	private String adresse;
 	private Integer telephone;
 	private String action;
+	private Mecanicien selectedMecanicien;
 	List<Mecanicien> Mecns=new ArrayList<Mecanicien>();
 	public List<Mecanicien> getMecns() {
 		Mecns=new MecanicienService().rechercheTousMecanicien();
 		return Mecns;
 	}
+	
+	
+	public Mecanicien getSelectedMecanicien() {
+		return selectedMecanicien;
+	}
+
+
+	public void setSelectedMecanicien(Mecanicien selectedMecanicien) {
+		this.selectedMecanicien = selectedMecanicien;
+	}
+
+
 	public void setMecns(List<Mecanicien> mecns) {
 		Mecns = mecns;
 	}

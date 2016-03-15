@@ -61,27 +61,21 @@ public class PersonnelHome {
 		}
 	}
 
-	// Méthode retourne la liste de tous les personnels
-	@SuppressWarnings("unchecked")
-	public List<Personnel> findAll() {
-		Criteria crit = sessionFactory.getCurrentSession().createCriteria(
-				Personnel.class);
-		return crit.list();
+	// Méthode retourne la liste de tous les personnels selon type et service et departement et compte
+		@SuppressWarnings("unchecked")
+		public List<Personnel> findAllWithJoin() {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(
+					Personnel.class)
+					.setFetchMode("typepersonnel", FetchMode.JOIN)
+					.setFetchMode("departement", FetchMode.JOIN)
+					.setFetchMode("service", FetchMode.JOIN)
+					.setFetchMode("compte", FetchMode.JOIN);
+			return crit.list();
 
-	}
+		}
 
-	// Méthode retourne la liste de tous les personnes avec jointure
-	// avec personne et societe
-	@SuppressWarnings("unchecked")
-	public List<Personnel> findAllWithJoin() {
-		Criteria crit = sessionFactory.getCurrentSession()
-				.createCriteria(Personnel.class)
-				.setFetchMode("ville", FetchMode.JOIN)
-				.setFetchMode("societes", FetchMode.JOIN);
-		return crit.list();
-
-	}
-
+	
+	
 	// Méthode de recherche des personnes pas leur nom
 	@SuppressWarnings("unchecked")
 	public List<Personnel> findByName(String nom) {
