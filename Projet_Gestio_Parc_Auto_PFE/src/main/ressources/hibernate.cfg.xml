@@ -29,5 +29,6 @@
   <mapping class="com.pfe.persistance.PieceRechange" resource="com/pfe/persistance/PieceRechange.hbm.xml"/>
   <mapping class="com.pfe.persistance.Reparation" resource="com/pfe/persistance/Reparation.hbm.xml"/>
   <mapping class="com.pfe.persistance.RepPanne" resource="com/pfe/persistance/RepPanne.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Ville" resource="com/pfe/persistance/Ville.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

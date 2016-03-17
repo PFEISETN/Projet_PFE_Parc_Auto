@@ -61,7 +61,7 @@ public class PersonnelHome {
 		}
 	}
 
-	// Méthode retourne la liste de tous les personnels selon type et service et departement et compte
+	// Méthode retourne la liste de tous les personnels selon type et service et departement et compte,ville
 		@SuppressWarnings("unchecked")
 		public List<Personnel> findAllWithJoin() {
 			Criteria crit = sessionFactory.getCurrentSession().createCriteria(
@@ -69,7 +69,8 @@ public class PersonnelHome {
 					.setFetchMode("typepersonnel", FetchMode.JOIN)
 					.setFetchMode("departement", FetchMode.JOIN)
 					.setFetchMode("service", FetchMode.JOIN)
-					.setFetchMode("compte", FetchMode.JOIN);
+					.setFetchMode("compte", FetchMode.JOIN)
+					.setFetchMode("ville", FetchMode.JOIN);
 			return crit.list();
 
 		}

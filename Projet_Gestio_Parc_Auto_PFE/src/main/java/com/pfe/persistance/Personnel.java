@@ -15,6 +15,7 @@ public class Personnel {
 	private Compte compte;
 	private Departement departement;
 	private Typepersonnel typepersonnel;
+	private Ville ville;
 	private Service service;
 	private String nom;
 	private String prenom;
@@ -25,6 +26,19 @@ public class Personnel {
 	private String email;
 	private String numero_tel1;
 	private String numero_tel2;
+	
+	public Compte getCompte() {
+		return compte;
+	}
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+	public Ville getVille() {
+		return ville;
+	}
+	public void setVille(Ville ville) {
+		this.ville = ville;
+	}
 	private Set<Compte> comptes = new HashSet<Compte>(0);
     private Set<Reclamation> reclamations=new HashSet<Reclamation>(0);
 	public Integer getMatricule() {
@@ -33,12 +47,7 @@ public class Personnel {
 	public void setMatricule(Integer matricule) {
 		this.matricule = matricule;
 	}
-	public Compte getCompte() {
-		return compte;
-	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
+	
 	public Departement getDepartement() {
 		return departement;
 	}
@@ -129,7 +138,6 @@ public class Personnel {
 		int result = 1;
 		result = prime * result + ((adresse == null) ? 0 : adresse.hashCode());
 		result = prime * result + ((cin == null) ? 0 : cin.hashCode());
-		result = prime * result + ((compte == null) ? 0 : compte.hashCode());
 		result = prime * result + ((comptes == null) ? 0 : comptes.hashCode());
 		result = prime * result
 				+ ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
@@ -171,11 +179,6 @@ public class Personnel {
 			if (other.cin != null)
 				return false;
 		} else if (!cin.equals(other.cin))
-			return false;
-		if (compte == null) {
-			if (other.compte != null)
-				return false;
-		} else if (!compte.equals(other.compte))
 			return false;
 		if (comptes == null) {
 			if (other.comptes != null)

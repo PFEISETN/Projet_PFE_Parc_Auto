@@ -7,18 +7,43 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import com.pfe.persistance.Compte;
+import com.pfe.persistance.Personnel;
 import com.pfe.services.CompteService;
 
 @ManagedBean(name = "connectBean")
 @SessionScoped
-public class ConnectBean {
+public class ConnectBean 
+{
+	private Personnel p;
+	private Integer matricule;
 	private String login;
 	private String motPasse;
 	private String action;
+	
+	public Integer getmatricule() {
+		return matricule;
+	}
+
+
+	public void setmatricule(Integer matricule) {
+		this.matricule = matricule;
+	}
+
+
 	public String getAction() {
 		return action;
 	}
 	
+
+	public Personnel getP() {
+		return p;
+	}
+
+
+	public void setP(Personnel p) {
+		this.p = p;
+	}
+
 
 	public void setAction(String action) {
 		this.action = action;
@@ -41,9 +66,10 @@ public class ConnectBean {
 	}
 
 	
-	public void ajout(){
+	public void ajout(Personnel p){
 		login=null;
 		motPasse=null;
+		System.out.println("Matricule est "+p.getMatricule());
 		action="Ajout";
 	}
 	
@@ -90,15 +116,14 @@ public class ConnectBean {
 					return motPasse=null;
 	}
 
-	public void valider() {
+	public void valider(Personnel p) {
 		Compte cpt = new Compte();
 		CompteService servi = new CompteService();
 		cpt.setLogin(login);
 		cpt.setMotDePasse(motPasse);
-		if ((action != null) && (action.equals("Ajout"))) {
-			servi.AjouterCompte(cpt);
-			System.out.print("ok");
-		}
+		cpt.setPersonnel(p);
+		//cpt.setPersonnel(per);
+		servi.AjouterCompte(cpt);
 	}
 
 	public void closeDiag() {

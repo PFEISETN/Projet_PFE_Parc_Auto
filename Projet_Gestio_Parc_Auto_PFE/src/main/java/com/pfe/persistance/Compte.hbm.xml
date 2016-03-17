@@ -4,11 +4,16 @@
 <!-- Generated 1 mars 2016 11:51:27 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.pfe.persistance.Compte" table="compte">
-        <id name="numeroCompte" type="java.lang.Integer">
-            <column name="numero_compte" />
-            <generator class="increment" />
+        <id name="matricule" type="java.lang.Integer">
+            <column name="matricule" />
+            <generator class="foreign" >
+            <param name="property">personnel</param>
+            </generator>
         </id>
-        <one-to-one name="personnel" class="com.pfe.persistance.Personnel"></one-to-one>
+        
+        <one-to-one name="personnel" class="com.pfe.persistance.Personnel"
+			constrained="true"></one-to-one>
+
         <property name="login" type="java.lang.String">
             <column name="login" />
         </property>

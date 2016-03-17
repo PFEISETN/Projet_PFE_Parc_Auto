@@ -2,20 +2,24 @@ package com.pfe.bean;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import com.pfe.persistance.Compte;
 import com.pfe.persistance.Departement;
 import com.pfe.persistance.Personnel;
 import com.pfe.persistance.Service;
 import com.pfe.persistance.Typepersonnel;
+import com.pfe.persistance.Ville;
 import com.pfe.services.CompteService;
 import com.pfe.services.DepartementService;
 import com.pfe.services.PersonnelService;
 import com.pfe.services.ServiceS;
 import com.pfe.services.TypePersonnelService;
+import com.pfe.services.VilleService;
 @ManagedBean(name = "personnelbean")
 @SessionScoped
 public class PersonnelBean {
@@ -35,17 +39,93 @@ public class PersonnelBean {
 	private Integer numerodepartement;
 	private Integer numeroservice;
 	private Integer numerotypeP;
+	private Integer idville;
+	private String nomville;
 	private String action;
+	private Departement departementP;
+	private Service serviceP;
+	private Typepersonnel typePer;
 	
-private Personnel selectedperonnel;
+	private String login;
+	private String motPasse;
 	
+	
+	
+     private Ville villeP;
+     private String actionCompte;
+ 	
 
-	public Personnel getSelectedperonnel() {
-		return selectedperonnel;
+    
+	public String getActionCompte() {
+		return actionCompte;
 	}
 
-	public void setSelectedperonnel(Personnel selectedperonnel) {
-		this.selectedperonnel = selectedperonnel;
+	public void setActionCompte(String actionCompte) {
+		this.actionCompte = actionCompte;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getMotPasse() {
+		return motPasse;
+	}
+
+	public void setMotPasse(String motPasse) {
+		this.motPasse = motPasse;
+	}
+
+	public Departement getDepartementP() {
+		return departementP;
+	}
+
+	public void setDepartementP(Departement departementP) {
+		this.departementP = departementP;
+	}
+
+	public Service getServiceP() {
+		return serviceP;
+	}
+
+	public void setServiceP(Service serviceP) {
+		this.serviceP = serviceP;
+	}
+
+	public Typepersonnel getTypePer() {
+		return typePer;
+	}
+
+	public void setTypePer(Typepersonnel typePer) {
+		this.typePer = typePer;
+	}
+
+	public Ville getVilleP() {
+		return villeP;
+	}
+
+	public void setVilleP(Ville villeP) {
+		this.villeP = villeP;
+	}
+
+	public Integer getIdville() {
+		return idville;
+	}
+
+	public void setIdville(Integer idville) {
+		this.idville = idville;
+	}
+
+	public String getNomville() {
+		return nomville;
+	}
+
+public void setNomville(String nomville) {
+		this.nomville = nomville;
 	}
 
 	public String getNumero_tel1() {
@@ -92,15 +172,24 @@ private Personnel selectedperonnel;
 	public void setPls(List<Personnel> pls) {
 		this.pls = pls;
 	}
-
+    List<Ville> vills=new ArrayList<Ville>();
 	List<Compte> comptes = new ArrayList<Compte>();
 	List<Departement> departements = new ArrayList<Departement>();
 	List<Service> services = new ArrayList<Service>();
 	List<Typepersonnel> typepersonnels = new ArrayList<Typepersonnel>();
-
+    
 	public List<Service> getServices() {
 		services = new ServiceS().rechercheTousService();
 		return services;
+	}
+
+	public List<Ville> getVills() {
+		vills=new VilleService().rechercheTousVilleAvecJoin();
+		return vills;
+	}
+
+	public void setVills(List<Ville> vills) {
+		this.vills = vills;
 	}
 
 	public void setServices(List<Service> services) {
@@ -266,9 +355,13 @@ private Personnel selectedperonnel;
 		numerodepartement = null;
 		numeroservice = null;
      	numerotypeP = null;
+     	idville=null;
+//     	login=null;
+//		motPasse=null;
 		numero_tel1=null;
 		numero_tel2=null;
 		action = "Ajouter";
+		//actionCompte="Ajout";
 	}
 
 	public void Modifier(Personnel p) {
@@ -283,9 +376,17 @@ private Personnel selectedperonnel;
 		numero_tel2=p.getNumero_tel2();
         if (p.getDepartement() != null)
 			numerodepartement = p.getDepartement().getNumeroDepartement();
+//        if (p.getCompte() != null)
+//			numerocompte = p.getCompte().getNumeroCompte();
+//        
+
+        if (p.getVille() != null)
+			idville = p.getVille().getId_ville();
+           // nomville=p.getVille().getNom_ville();
 
 		if (p.getService() != null)
 			numeroservice = p.getService().getNumeroService();
+		
 
 	    if (p.getTypepersonnel() != null)
 		numerotypeP = p.getTypepersonnel().getNumeroTypeP();
@@ -297,34 +398,39 @@ private Personnel selectedperonnel;
 	 { 
 		FacesContext faces = FacesContext.getCurrentInstance();
 		   Personnel p=new Personnel();
+		   Boolean V=false;
 		   if((nom =="")||(prenom =="")||(cin ==""))
 		   { 
+			   V=true;
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"vous dever remplire tous les champs obligatoire !! ", "")); 
 		   }
 		   if(nom.matches("[+-]?\\d*(\\.\\d+)?"))
-		   { 
+		   {  
+			   V=true;
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Ce nom est invalide !! ", "")); 
 		   }
 		   if(prenom.matches("[+-]?\\d*(\\.\\d+)?"))
 		   { 
+			   V=true;
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"Ce prenom est invalide !! ", "")); 
 		   }
-		   if ((telephone=="")&&((numero_tel1=="")&&(numero_tel2=="")))
+		  if ((telephone=="")&&((numero_tel1=="")&&(numero_tel2=="")))
 		   {  
+			   V=true;
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Vous dever avoir au minimum un N° GSM !! ", "")); 
 		   }
- 
-         if ((cin.length() > 8)||((cin.length() < 8)))
+		  if ((cin.length() > 8)||((cin.length() < 8)))
 		   {  
+			   V=true;
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Le numero du carte d'identité est invalide !! ", "")); 
 		   }
-         else if (email.matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+")) 
-			{
+         if((V==false)&&(email.matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+")))
+		{
 		    p.setEmail(email);
 			p.setNom(nom);
 			p.setPrenom(prenom);
@@ -335,18 +441,29 @@ private Personnel selectedperonnel;
 			p.setNumero_tel2(numero_tel2);
 			Departement dep = new Departement();
 			dep.setNumeroDepartement(numerodepartement);
+			Ville v=new Ville();
+			v.setId_ville(idville);
 			Service s = new Service();
 			s.setNumeroService(numeroservice);
-				Typepersonnel typeP = new Typepersonnel();
-				typeP.setNumeroTypeP(numerotypeP);
-				p.setDateNaissance(dateNaissance);
+			Typepersonnel typeP = new Typepersonnel();
+			typeP.setNumeroTypeP(numerotypeP);
+			p.setDateNaissance(dateNaissance);
 			p.setEmail(email);
 			p.setDepartement(dep);
 			p.setService(s);
 			p.setTypepersonnel(typeP);
-			 if(action!= null && action.equals("Ajouter")) 
+			p.setVille(v);
+		 if(action!= null && action.equals("Ajouter")) 
 			  { 
 		  		new PersonnelService().AjouterPersonnel(p);
+//		  		Compte cpt = new Compte();
+//				CompteService servi = new CompteService();
+//				cpt.setLogin(login);
+//				cpt.setMotDePasse(motPasse);
+//				if ((action != null) && (actionCompte.equals("Ajout"))) {
+//					servi.AjouterCompte(cpt);
+//					System.out.print("compte ajouter");
+//				}
 		  		faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Personne ajoutée avec succès.", "")); 
 			  }
@@ -380,6 +497,7 @@ private Personnel selectedperonnel;
 		cin = null;
 		email = null;
 		adresse = null;
+		idville=null;
 		numerodepartement = null;
 	    numeroservice = null;
  		numerotypeP = null;
