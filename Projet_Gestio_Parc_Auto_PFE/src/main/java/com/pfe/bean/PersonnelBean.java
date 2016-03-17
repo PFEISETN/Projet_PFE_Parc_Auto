@@ -453,7 +453,8 @@ public void setNomville(String nomville) {
 			p.setService(s);
 			p.setTypepersonnel(typeP);
 			p.setVille(v);
-		 if(action!= null && action.equals("Ajouter")) 
+
+            if(action!= null && action.equals("Ajouter")) 
 			  { 
 		  		new PersonnelService().AjouterPersonnel(p);
 //		  		Compte cpt = new Compte();

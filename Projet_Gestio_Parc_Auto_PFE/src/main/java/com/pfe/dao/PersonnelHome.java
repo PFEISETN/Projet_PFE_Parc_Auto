@@ -69,7 +69,6 @@ public class PersonnelHome {
 					.setFetchMode("typepersonnel", FetchMode.JOIN)
 					.setFetchMode("departement", FetchMode.JOIN)
 					.setFetchMode("service", FetchMode.JOIN)
-					.setFetchMode("compte", FetchMode.JOIN)
 					.setFetchMode("ville", FetchMode.JOIN);
 			return crit.list();
 

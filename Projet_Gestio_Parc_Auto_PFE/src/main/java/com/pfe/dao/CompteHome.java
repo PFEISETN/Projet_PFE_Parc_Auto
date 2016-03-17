@@ -34,7 +34,7 @@ public class CompteHome {
 		// ////////////////////////////////////////////////////////////////////////
 	public Compte findByUtilisateurAndPassword(String l , String m) {
 		Criteria crit = sessionFactory.getCurrentSession().createCriteria(
-				Compte.class).add(Restrictions.and(Restrictions.eq("login", l),(Restrictions.eq("motDePasse",m))));
+				Compte.class).add(Restrictions.and(Restrictions.eq("login", l),(Restrictions.eq("mot_de_passe",m))));
 		return (Compte) crit.uniqueResult();
 
 	}
