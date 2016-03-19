@@ -5,7 +5,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import com.pfe.persistance.Compte;
 import com.pfe.persistance.Personnel;
 import com.pfe.services.CompteService;
@@ -19,7 +18,6 @@ public class ConnectBean
 	private String login;
 	private String motPasse;
 	private String action;
-	
 	public Integer getmatricule() {
 		return matricule;
 	}
@@ -67,6 +65,7 @@ public class ConnectBean
 
 	
 	public void ajout(Personnel p){
+		matricule=p.getMatricule();
 		login=null;
 		motPasse=null;
 		System.out.println("Matricule est "+p.getMatricule());
@@ -96,11 +95,12 @@ public class ConnectBean
 		FacesContext faces = FacesContext.getCurrentInstance();
 		if ((login.equals("") && motPasse.equals("")))
 		{	
+			login="";
+			motPasse="";
 			faces.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_WARN, "erreur",
 					"Vous dever remplire svp tout les champs "));
-			login=null;
-			motPasse=null;
+			
 	    }
 		else if (login.equals("admin") && motPasse.equals("admin")) {
 			return "/Templette.xhtml";
@@ -112,19 +112,42 @@ public class ConnectBean
 			faces.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_ERROR, "erreur",
 					"Les informations saisie sont invalides "));
-					login=null;
-					return motPasse=null;
-	}
-
-	public void valider(Personnel p) {
+			login=null;
+			return motPasse=null;
+	   }
+	public void valider() {
+		System.out.println("mat=="+matricule);
+		FacesContext faces = FacesContext.getCurrentInstance();
 		Compte cpt = new Compte();
 		CompteService servi = new CompteService();
-		cpt.setLogin(login);
-		cpt.setMotDePasse(motPasse);
-		cpt.setPersonnel(p);
-		//cpt.setPersonnel(per);
-		servi.AjouterCompte(cpt);
+		Personnel per= new Personnel();
+		per.setMatricule(matricule);
+		if(existeCompte(matricule))
+		{	
+			cpt.setLogin(login);
+		cpt.setmot_de_passe(motPasse);
+		cpt.setPersonnel(per);
+	    servi.AjouterCompte(cpt);
+	    faces.addMessage(null, new FacesMessage(
+				FacesMessage.SEVERITY_FATAL, "Compte ajouter",
+				"Compte ajouter  "));
+	    }
+		else 
+			faces.addMessage(null, new FacesMessage(
+					FacesMessage.SEVERITY_ERROR, "Ce personnel est deja un utilisateur",
+					"Ce personnel est deja un utilisateur"));
+		
 	}
+
+	private boolean existeCompte(Integer id) {
+		CompteService ser = new CompteService();
+		Compte compte = new Compte();
+		compte=ser.rechercheCompteParId(id);
+		  if(compte==null)
+			  return true;
+		  else  return false;
+	}
+
 
 	public void closeDiag() {
 		login = null;

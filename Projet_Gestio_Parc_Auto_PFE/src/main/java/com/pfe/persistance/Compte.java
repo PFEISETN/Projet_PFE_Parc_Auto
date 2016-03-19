@@ -11,7 +11,7 @@ public class Compte {
 	private Integer matricule;
 	private Personnel personnel;
 	private String login;
-	private String motDePasse;
+	private String mot_de_passe;
 
 
 	public Compte() {
@@ -48,13 +48,13 @@ public class Compte {
 	}
 
 
-	public String getMotDePasse() {
-		return motDePasse;
+	public String getmot_de_passe() {
+		return mot_de_passe;
 	}
 
 
-	public void setMotDePasse(String motDePasse) {
-		this.motDePasse = motDePasse;
+	public void setmot_de_passe(String mot_de_passe) {
+		this.mot_de_passe = mot_de_passe;
 	}
 
 
@@ -66,7 +66,7 @@ public class Compte {
 		result = prime * result
 				+ ((matricule == null) ? 0 : matricule.hashCode());
 		result = prime * result
-				+ ((motDePasse == null) ? 0 : motDePasse.hashCode());
+				+ ((mot_de_passe == null) ? 0 : mot_de_passe.hashCode());
 		return result;
 	}
 
@@ -90,10 +90,10 @@ public class Compte {
 				return false;
 		} else if (!matricule.equals(other.matricule))
 			return false;
-		if (motDePasse == null) {
-			if (other.motDePasse != null)
+		if (mot_de_passe == null) {
+			if (other.mot_de_passe != null)
 				return false;
-		} else if (!motDePasse.equals(other.motDePasse))
+		} else if (!mot_de_passe.equals(other.mot_de_passe))
 			return false;
 		return true;
 	}

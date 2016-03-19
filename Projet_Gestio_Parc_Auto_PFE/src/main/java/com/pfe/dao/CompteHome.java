@@ -1,10 +1,13 @@
 package com.pfe.dao;
 import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+
 import com.pfe.dao.HibernateUtil;
 import com.pfe.persistance.Compte;
+import com.pfe.persistance.Personnel;
 public class CompteHome {
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -38,6 +41,17 @@ public class CompteHome {
 		return (Compte) crit.uniqueResult();
 
 	}
+	public Compte findById(Integer id) {
+		try {
+			Compte instance = (Compte) sessionFactory.getCurrentSession()
+					.get(Compte.class, id);
+
+			return instance;
+		} catch (RuntimeException re) {
+			throw re;
+		}
+	}
+
 		 @SuppressWarnings("unchecked")
 			public List<Compte> findAll() {
 				Criteria crit = sessionFactory.getCurrentSession().createCriteria(

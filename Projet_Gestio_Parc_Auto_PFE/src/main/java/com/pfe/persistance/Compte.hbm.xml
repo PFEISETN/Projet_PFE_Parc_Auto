@@ -10,14 +10,13 @@
             <param name="property">personnel</param>
             </generator>
         </id>
-        
-        <one-to-one name="personnel" class="com.pfe.persistance.Personnel"
-			constrained="true"></one-to-one>
+        <one-to-one name="personnel" class="com.pfe.persistance.Personnel" 
+			></one-to-one>
 
         <property name="login" type="java.lang.String">
             <column name="login" />
         </property>
-        <property name="motDePasse" type="java.lang.String">
+        <property name="mot_de_passe" type="java.lang.String">
             <column name="mot_de_passe" />
         </property>
     </class>

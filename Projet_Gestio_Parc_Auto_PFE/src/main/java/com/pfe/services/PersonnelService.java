@@ -12,13 +12,13 @@ public class PersonnelService {
 	}
 
 public void AjouterPersonnel(Personnel personnel) {
-		
-		//Compte cli = new Compte();
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+	
+	Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
 			dao.persist(personnel);
+			
 			tx.commit();
 		} catch (RuntimeException ce) {
 			if (tx != null)
@@ -52,7 +52,6 @@ public void AjouterPersonnel(Personnel personnel) {
 		try {
 
 			tx = session.beginTransaction();
-
 			pm = dao.merge(p);
 			tx.commit();
 

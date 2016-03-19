@@ -45,13 +45,36 @@ public class PersonnelBean {
 	private Departement departementP;
 	private Service serviceP;
 	private Typepersonnel typePer;
-	
-	private String login;
-	private String motPasse;
-	
-	
-	
-     private Ville villeP;
+//	private String[] listeAttributs ;
+//	public String[] getListeAttributs() {
+//		listeAttributs=Rec_Liste_Attributs();
+//		return listeAttributs;
+//	}
+//
+//	public void setListeAttributs(String[] listeAttributs) {
+//		this.listeAttributs = listeAttributs;
+//	}
+
+//	public String[] Rec_Liste_Attributs()
+//	{ 
+//		// attributs est une liste pour recuperer les attributs du personnels dispo
+//	    String[] listeAttribut = new String[12];
+//		listeAttribut[1] = "Matricule";
+//		listeAttribut[2] = "Prenom";
+//		listeAttribut[3] = "Nom";
+//		listeAttribut[4] = "Telephone";
+//		listeAttribut[5] = "Cin";
+//		listeAttribut[6] = "Date Naissance";
+//		listeAttribut[7] = "Adresse";
+//		listeAttribut[8] = "N° GSM1";
+//		listeAttribut[9] = "N° GSM2";
+//		listeAttribut[10] = "N° compte";
+//		listeAttribut[11] = "Nom Departement";
+//		listeAttribut[12] = "Nom Ville";
+//	    return listeAttribut;	
+//		    
+//	}
+	private Ville villeP;
      private String actionCompte;
  	
 
@@ -62,22 +85,6 @@ public class PersonnelBean {
 
 	public void setActionCompte(String actionCompte) {
 		this.actionCompte = actionCompte;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getMotPasse() {
-		return motPasse;
-	}
-
-	public void setMotPasse(String motPasse) {
-		this.motPasse = motPasse;
 	}
 
 	public Departement getDepartementP() {
@@ -356,12 +363,10 @@ public void setNomville(String nomville) {
 		numeroservice = null;
      	numerotypeP = null;
      	idville=null;
-//     	login=null;
-//		motPasse=null;
-		numero_tel1=null;
+     	numero_tel1=null;
 		numero_tel2=null;
 		action = "Ajouter";
-		//actionCompte="Ajout";
+		
 	}
 
 	public void Modifier(Personnel p) {
@@ -376,22 +381,13 @@ public void setNomville(String nomville) {
 		numero_tel2=p.getNumero_tel2();
         if (p.getDepartement() != null)
 			numerodepartement = p.getDepartement().getNumeroDepartement();
-//        if (p.getCompte() != null)
-//			numerocompte = p.getCompte().getNumeroCompte();
-//        
-
         if (p.getVille() != null)
 			idville = p.getVille().getId_ville();
-           // nomville=p.getVille().getNom_ville();
-
-		if (p.getService() != null)
+        if (p.getService() != null)
 			numeroservice = p.getService().getNumeroService();
-		
-
 	    if (p.getTypepersonnel() != null)
 		numerotypeP = p.getTypepersonnel().getNumeroTypeP();
-
-		dateNaissance = p.getDateNaissance();
+	    dateNaissance = p.getDateNaissance();
 		action="Modification";
 	}
 	public void Validation()
@@ -431,7 +427,7 @@ public void setNomville(String nomville) {
 		   }
          if((V==false)&&(email.matches("(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)*\\@(?:\\w|[\\-_])+(?:\\.(?:\\w|[\\-_])+)+")))
 		{
-		    p.setEmail(email);
+            p.setEmail(email);
 			p.setNom(nom);
 			p.setPrenom(prenom);
 			p.setCin(cin);
@@ -457,26 +453,21 @@ public void setNomville(String nomville) {
             if(action!= null && action.equals("Ajouter")) 
 			  { 
 		  		new PersonnelService().AjouterPersonnel(p);
-//		  		Compte cpt = new Compte();
-//				CompteService servi = new CompteService();
-//				cpt.setLogin(login);
-//				cpt.setMotDePasse(motPasse);
-//				if ((action != null) && (actionCompte.equals("Ajout"))) {
-//					servi.AjouterCompte(cpt);
-//					System.out.print("compte ajouter");
-//				}
 		  		faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 						"Personne ajoutée avec succès.", "")); 
 			  }
 			 else  if (action != null && action.equals("Modification")) {
-					p.setMatricule(matricule);
+				 	p.setMatricule(matricule);
+				 	System.out.println(matricule);
 					new PersonnelService().modifierPersonnel(p);
+					System.out.println("personnel modifier ");
 					faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
 							"Personne modifiée avec succès.", ""));
 			  }
 			}
         else faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"l'adress Email est invalide .", "")); 
 	 }
+	
 	public void supprimer(Personnel p) {
 		PersonnelService ser = new PersonnelService();
 		ser.supprimerPersonnel(p);

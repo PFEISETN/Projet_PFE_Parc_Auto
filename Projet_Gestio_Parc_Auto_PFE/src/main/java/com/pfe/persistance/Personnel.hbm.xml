@@ -8,10 +8,10 @@
             <column name="matricule" />
             <generator class="increment" />
         </id>
-         <one-to-one name="compte" class="com.pfe.persistance.Compte"
-			constrained="true"></one-to-one>
-        
-        <many-to-one name="ville" class="com.pfe.persistance.Ville" fetch="select">
+          <one-to-one name="compte"
+    class="com.pfe.persistance.Compte"  >
+    </one-to-one>
+     <many-to-one name="ville" class="com.pfe.persistance.Ville" fetch="select">
             <column name="id_ville" />
         </many-to-one>
         <many-to-one name="departement" class="com.pfe.persistance.Departement" fetch="select">
@@ -50,6 +50,7 @@
         <property name="numero_tel2" type="java.lang.String">
             <column name="numero_tel2" />
         </property>
+        
         <set name="comptes" table="compte" inverse="false" lazy="true">
             <key>
                 <column name="matricule" />
