@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 20 mars 2016 18:33:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.pfe.persistance.Modele" table="modele" catalog="parc_auto_pfe">
+        <id name="numeroModele" type="java.lang.Integer">
+            <column name="numero_modele" />
+            <generator class="identity" />
+        </id>
+        <property name="nomModele" type="string">
+            <column name="nom_modele" length="45" />
+        </property>
+        <property name="typeModele" type="string">
+            <column name="type_modele" length="45" />
+        </property>
+        <set name="marques" table="marque" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="numero_modele" />
+            </key>
+            <one-to-many class="com.pfe.persistance.Marque" />
+        </set>
+    </class>
+</hibernate-mapping>

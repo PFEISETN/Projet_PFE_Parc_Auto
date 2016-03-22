@@ -1,6 +1,4 @@
 package com.pfe.bean;
-
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -8,7 +6,6 @@ import javax.faces.context.FacesContext;
 import com.pfe.persistance.Compte;
 import com.pfe.persistance.Personnel;
 import com.pfe.services.CompteService;
-
 @ManagedBean(name = "connectBean")
 @SessionScoped
 public class ConnectBean 
@@ -17,9 +14,20 @@ public class ConnectBean
 	private Integer matricule;
 	private String login;
 	private String motPasse;
+	private String motPasse2;
 	private String action;
 	public Integer getmatricule() {
 		return matricule;
+	}
+
+
+	public String getMotPasse2() {
+		return motPasse2;
+	}
+
+
+	public void setMotPasse2(String motPasse2) {
+		this.motPasse2 = motPasse2;
 	}
 
 
@@ -68,7 +76,6 @@ public class ConnectBean
 		matricule=p.getMatricule();
 		login=null;
 		motPasse=null;
-		System.out.println("Matricule est "+p.getMatricule());
 		action="Ajout";
 	}
 	
@@ -77,11 +84,9 @@ public class ConnectBean
 		Compte cmp = new Compte();
 		cmp = dao.rechercheParUtilisateurMotPasse(login, motpass);
 		if (cmp != null)
-			// System.out.println(cmp.getMotDePasse());
 			return true;
 
 		else
-			// System.out.println("compte nexiste pas");
 			return false;
 	}
 
@@ -95,28 +100,27 @@ public class ConnectBean
 		FacesContext faces = FacesContext.getCurrentInstance();
 		if ((login.equals("") && motPasse.equals("")))
 		{	
-			login="";
-			motPasse="";
+			login = null;
+			motPasse = null;
 			faces.addMessage(null, new FacesMessage(
 					FacesMessage.SEVERITY_WARN, "erreur",
 					"Vous dever remplire svp tout les champs "));
 			
 	    }
 		else if (login.equals("admin") && motPasse.equals("admin")) {
+			login = null;
+			motPasse = null;
 			return "/Templette.xhtml";
 		}
 		else if (existeCompte(login, motPasse)) {
 			return "/Templette.xhtml";
 		} 
 		else
-			faces.addMessage(null, new FacesMessage(
-					FacesMessage.SEVERITY_ERROR, "erreur",
-					"Les informations saisie sont invalides "));
-			login=null;
-			return motPasse=null;
+			login = null;
+		    motPasse = null;
+		    return null;
 	   }
 	public void valider() {
-		System.out.println("mat=="+matricule);
 		FacesContext faces = FacesContext.getCurrentInstance();
 		Compte cpt = new Compte();
 		CompteService servi = new CompteService();
@@ -124,11 +128,11 @@ public class ConnectBean
 		per.setMatricule(matricule);
 		if(existeCompte(matricule))
 		{	
-			cpt.setLogin(login);
-		cpt.setmot_de_passe(motPasse);
-		cpt.setPersonnel(per);
-	    servi.AjouterCompte(cpt);
-	    faces.addMessage(null, new FacesMessage(
+		  cpt.setLogin(login);
+		  cpt.setmot_de_passe(motPasse);
+		  cpt.setPersonnel(per);
+	      servi.AjouterCompte(cpt);
+	      faces.addMessage(null, new FacesMessage(
 				FacesMessage.SEVERITY_FATAL, "Compte ajouter",
 				"Compte ajouter  "));
 	    }
@@ -154,12 +158,21 @@ public class ConnectBean
 		motPasse = null;	
 	}
 	
- public void annuler()
-   {
-	    login = null;
+ public void vide() 
+ {
+		login = null;
 		motPasse = null;
-	}
-	public String init() {
+ }
+ public void supprimer(Personnel p) {
+		CompteService ser = new CompteService();
+		Compte compte= p.getCompte();
+		ser.supprimerCompte(compte);
+		addMessage("Compte supprimer avec succee", ".");
+		}
+
+ 
+ 
+public String init() {
 		login = null;
 		motPasse = null;
 		action = "Ajout";

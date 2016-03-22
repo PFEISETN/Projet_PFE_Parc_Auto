@@ -3,7 +3,9 @@ package com.pfe.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.SessionFactory;
+
 import com.pfe.persistance.Marque;
 
 
@@ -66,5 +68,17 @@ public class MarqueHome {
 					Marque.class);
 			return crit.list();
 
+		}
+
+		
+		
+		
+		// Méthode retourne la liste de tous les personnes
+		@SuppressWarnings("unchecked")
+		public List<Marque> findAllWithJoin() {
+			Criteria crit = sessionFactory.getCurrentSession().createCriteria(
+					Marque.class)
+					.setFetchMode("modele", FetchMode.JOIN);
+			return crit.list();
 		}
 }

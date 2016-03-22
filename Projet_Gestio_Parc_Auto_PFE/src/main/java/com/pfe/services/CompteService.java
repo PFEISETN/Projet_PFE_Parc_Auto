@@ -1,13 +1,10 @@
 package com.pfe.services;
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import com.pfe.dao.CompteHome;
 import com.pfe.dao.HibernateUtil;
 import com.pfe.persistance.Compte;
-
 public class CompteService {
 	CompteHome dao = new CompteHome();
 
@@ -27,7 +24,24 @@ public class CompteService {
 			ce.printStackTrace();
 		}
 	}
+//////////////////////////////////////////:::::::::::::::::::::::::///
+	public void supprimerCompte(Compte compte) {
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = null;
+		try {
 
+			tx = session.beginTransaction();
+
+			dao.delete(compte);
+			tx.commit();
+
+		} catch (RuntimeException ex) {
+
+			if (tx != null)
+				tx.rollback();
+			ex.printStackTrace();
+		}
+	}
 	// //////////////////////////////////////////////////////////////::
 	public Compte rechercheParUtilisateurMotPasse(String l, String m) {
 		Compte p = new Compte();
@@ -93,4 +107,5 @@ public class CompteService {
 		return (liste);
 
 	}
+
 }

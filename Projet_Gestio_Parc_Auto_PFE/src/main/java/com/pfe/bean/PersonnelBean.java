@@ -401,7 +401,7 @@ public void setNomville(String nomville) {
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 						"vous dever remplire tous les champs obligatoire !! ", "")); 
 		   }
-		   if(nom.matches("[+-]?\\d*(\\.\\d+)?"))
+		 if(nom.matches("[+-]?\\d*(\\.\\d+)?"))
 		   {  
 			   V=true;
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
@@ -465,14 +465,35 @@ public void setNomville(String nomville) {
 							"Personne modifiée avec succès.", ""));
 			  }
 			}
+
         else faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"l'adress Email est invalide .", "")); 
 	 }
+
+	public boolean Personel_Compte_NExiste(int x)
+	{
+		Compte cpt = new Compte();
+		CompteService ser = new CompteService();
+		cpt= ser.rechercheCompteParId(x);
+		  if(cpt==null)
+			 return true;
+		  else return false;
+		
+	}
+	
+	
 	
 	public void supprimer(Personnel p) {
+		FacesContext faces = FacesContext.getCurrentInstance();
 		PersonnelService ser = new PersonnelService();
-		ser.supprimerPersonnel(p);
-		addMessage("suppression avec succee", ".");
-	}
+		matricule = p.getMatricule();
+		if(Personel_Compte_NExiste(matricule))
+		{
+		   ser.supprimerPersonnel(p);
+		   addMessage("suppression avec succee", ".");
+		}
+		else 
+			faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Vous dever supprimer leur compte avant !!!", "")); 
+	 }
 
 	public void addMessage(String summary, String detail) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO,

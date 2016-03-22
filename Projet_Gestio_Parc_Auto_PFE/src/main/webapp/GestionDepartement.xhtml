@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+   <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Parc Auto</title>
+	<meta
+		content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
+		name='viewport'></meta>
+	<meta name="description" content="Developed By M Abdur Rokib Promy"></meta>
+	<meta name="keywords"
+		content="Admin, Bootstrap 3, Template, Theme, Responsive"></meta>
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -22,15 +28,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Lato'
 		rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	<style type="text/css"></style>
-	<style>
-.ui-growl {
-	position: absolute;
-	top: 85%;
-	left: 75%;
+	    <style type="text/css"></style>
+    <style >
+    .ui-growl {
+    position:absolute;
+    top:85%;
+    left:75%;
 }
-</style>
-</h:head>
+    </style></h:head>
 <h:body class="skin-black">
 	<header class="header"> <a href="index.html" class="logo">
 		Administrateur </a> <nav class="navbar navbar-static-top"
@@ -196,8 +201,8 @@
 
 					<li class="divider"></li>
 
-					<li><a href="Index.xhtml"><i
-							class="fa fa-ban fa-fw pull-right"></i> Logout</a></li>
+					<li><a href="#"><i class="fa fa-ban fa-fw pull-right"></i>
+							Logout</a></li>
 				</ul></li>
 		</ul>
 	</div>
@@ -212,7 +217,7 @@
 			</div>
 			<div class="pull-left info">
 				<p>Bonjours, Admin</p>
-				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
 		</div>
 		<!-- search form -->
@@ -240,7 +245,7 @@
 					<span> Statistique </span>
 			</a></li>
 
-			<li><a href="Gestion_Vehicule.xhtml"> <i
+			<li><a href="Gestion_vehicules.xhtml"> <i
 					class="ion-ios7-cart"></i> <span> Gestion Vehicules </span>
 			</a></li>
 			<li><a href="general.html"> <i class="fa fa-wrench"></i> <span>Gestion
@@ -260,102 +265,51 @@
 
 			<li><a href="Demandes.xhtml"> <i class="fa fa-file-text-o"></i>
 					<span>Gestion demandes</span>
-			</a></li>
-		</ul>
-		</section></aside>
-		<h:form id="f1">
-			<p:growl id="growl" life="5000" />
-			<div align="center">
-				<h:outputText value="Liste Des Mecanicien"
-					style="font-size:36px;font-weight:bold"></h:outputText>
-				<br /> <br /> <br />
-				<div>
-					<div align="right">
-						<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
-							update=":f1:f2:idDialog"
-							oncomplete="PF('dialogMecanicien').show()"
-							actionListener="#{mecanicienbean.Ajout()}" />
-					</div>
-					<div align="right">
-						<p:dataTable var="m" value="#{mecanicienbean.mecns}" border="0"
+			</a></li></ul></section></aside>
+	       <div>
+	       
+	       
+	       <h:form id="f1">
+				<p:growl id="growl" life="5000" />
+				<div align="center">
+					<h:outputText value="Liste Des Departements"></h:outputText>
+					<br/><br/><br/>
+				<div><div align="right">
+							<p:commandButton value="Nouveau" icon="ui-icon-plusthick"
+								update=":f1:f2:idDialog1"
+								oncomplete="PF('dialogDepartement').show()"
+								actionListener="#{departementbean.Ajout()}" />
+					</div>			
+						<div align="right">
+						<p:dataTable var="dep" value="#{departementbean.deprts}" border="0"
 							paginator="true" paginatorPosition="bottom"
 							paginatorTemplate=" {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
-							rows="10" style="width :80%">
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Numero" />
-								</f:facet>
-								<h:outputText value=" #{m.numero_mec}" />
+							rows="10"  id="data"
+            			 style="width :80%">
+			
+							<p:column headerText="Numero Departement ">
+							<h:outputText value=" #{dep.numeroDepartement}" />
 							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Nom " />
-								</f:facet>
-								<h:outputText value=" #{m.nom_mecanicien}" />
+							<p:column headerText="Nom Departement ">
+							<h:outputText value=" #{dep.nomDepartement}" />
 							</p:column>
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Adresse" />
-								</f:facet>
-								<h:outputText value=" #{m.adresse}" />
-							</p:column>
-
-							<p:column>
-								<f:facet name="header">
-									<h:outputLabel value="Telephone" />
-								</f:facet>
-								<h:outputText value=" #{m.telephone}" />
-							</p:column>
-
+							
 							<p:column style="width:20%">
-								<p:commandButton update=":f1:MecanicienDetail"
-									oncomplete="PF('MecanicienDialog').show()"
-									icon="ui-icon-circle-zoomin" title="View">
-									<f:setPropertyActionListener value="#{m}"
-										target="#{mecanicienbean.selectedMecanicien}" />
-								</p:commandButton>
-								<p:commandButton actionListener="#{mecanicienbean.Modifier(m)}"
-									update=":f1:f2:idDialog"
-									oncomplete="PF('dialogMecanicien').show()"
-									icon="ui-icon-pencil" title="Modification" />
-								<p:commandButton actionListener="#{mecanicienbean.supprimer(m)}"
-									icon="ui-icon-trash" title="Suppression Mecanicien"
+								<p:commandButton actionListener="#{departementbean.Modifier(dep)}"
+									update=":f1:f2:idDialog1"
+									oncomplete="PF('dialogDepartement').show()" icon="ui-icon-pencil"
+									title="Modification" />
+									
+								<p:commandButton actionListener="#{departementbean.supprimer(dep)}"
+									icon="ui-icon-trash" title="Suppression Departement"
 									update=":f1,:f1:growl">
-									<p:confirm header="Suppression Mecanicien"
-										message="Voulez-vous vraiment supprimer cette Mecanicien ?"
+									<p:confirm header="Suppression Vehicule"
+										message="Voulez-vous vraiment supprimer cette Departement ?"
 										icon="ui-icon-alert" />
 								</p:commandButton>
+								
 							</p:column>
 						</p:dataTable>
-						<p:dialog header="Mecanicien Info" widgetVar="MecanicienDialog"
-							modal="true" showHeader="false" closable="false"
-							resizable="false">
-							<h:panelGrid columns="2" style="margin:0 auto;">
-								<p:outputPanel id="MecanicienDetail">
-									<h:outputText value="N° mecanicien" style="color: crimson;" />
-									<h:inputText
-										value="#{mecanicienbean.selectedMecanicien.numero_mec}"
-										readonly="true" />
-									<h:outputText value="Nom Mecanicien : " style="color: crimson;" />
-									<h:inputText
-										value="#{mecanicienbean.selectedMecanicien.nom_mecanicien}"
-										readonly="true" />
-									<h:outputText value="Telephone : " style="color: crimson;" />
-									<h:inputText
-										value="#{mecanicienbean.selectedMecanicien.telephone}"
-										readonly="true" />
-									<h:outputText value="Adress : " style="color: crimson;" />
-									<h:inputText
-										value="#{mecanicienbean.selectedMecanicien.adresse}"
-										readonly="true" />
-									<p:commandButton value="Annuler"
-										icon="ui-icon-arrowreturnthick-1-n"
-										actionListener="#{mecanicienbean.closD()}"
-										oncomplete="PF('dialogMecanicien').hide();" />
-								</p:outputPanel>
-							</h:panelGrid>
-						</p:dialog>
-
 						<p:confirmDialog global="true" showEffect="fade"
 							hideEffect="explode">
 							<p:commandButton value="Oui" type="button"
@@ -364,67 +318,40 @@
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 						</p:confirmDialog>
 					</div>
-					<h:form id="f2">
-						<p:dialog id="idDialog" widgetVar="dialogMecanicien" modal="true"
-							showHeader="false" closable="false" resizable="false" style="width:350px">
-							<div>
-								<p:panel id="dialogP"
-									header="#{personnelbean.action} Mecanicien Externe"
-									align="center">
-									<h:panelGrid columns="2" cellpadding="2" cellspacing="10">
-										<p:outputLabel value="Nom : " />
-										<p:inputText value="#{mecanicienbean.nom_mecanicien}"
-											style="width:200px" />
-										<p:outputLabel></p:outputLabel>
-										<p:outputLabel></p:outputLabel>
-
-										<p:outputLabel value="Adresse: " />
-										<p:inputText value="#{mecanicienbean.adresse}"
-											style="width:200px" />
-										<p:outputLabel></p:outputLabel>
-										<p:outputLabel></p:outputLabel>
-
-										<p:outputLabel value="Telephone : " />
-										<p:inputMask id="telephone"
-											value="#{mecanicienbean.telephone}" mask="(+999) 99-999-999"
-											style="width:200px" />
-										<p:outputLabel></p:outputLabel>
-										<p:outputLabel></p:outputLabel>
-
-										<p:outputLabel value="GSM1 : " />
-										<p:inputMask id="numero_tel1"
-											value="#{mecanicienbean.numero_tel1}"
-											mask="(+999) 99-999-999" style="width:200px" />
-										<p:outputLabel></p:outputLabel>
-										<p:outputLabel></p:outputLabel>
-
-										<p:outputLabel value="GSM2 : " />
-										<p:inputMask id="numero_tel2"
-											value="#{mecanicienbean.numero_tel2}"
-											mask="(+999) 99-999-999" style="width:200px" />
-										<p:outputLabel></p:outputLabel>
-										<p:outputLabel></p:outputLabel>
-
-									</h:panelGrid>
-									<h:panelGrid columns="4">
-										<div align="center">
+				</div>
+				<br />
+				<br />
+				</div>
+				<h:form id="f2">
+	      
+							<p:dialog id="idDialog1" widgetVar="dialogDepartement" modal="true"
+								showHeader="false" closable="false" resizable="false">
+								<div>
+									<p:panel id="dialogd" header="#{departementbean.action} Departement" align="center">
+										<h:panelGrid columns="1">
+										
+											<p:outputLabel value="Nom departement :        " />
+											<p:inputText value="#{departementbean.nomDepartement}"
+												style="width:200px" />
+											
+										</h:panelGrid>
+										<h:panelGrid columns="2" >
 											<p:commandButton value="Valider" icon="ui-icon-check"
-												oncomplete="PF('dialogMecanicien').hide();"
-												action="#{mecanicienbean.validation()}" update=":f1" />
+												oncomplete="PF('dialogDepartement').hide();"
+												action="#{departementbean.Valider()}" update=":f1" />
 											<p:commandButton value="Annuler"
 												icon="ui-icon-arrowreturnthick-1-n"
-												actionListener="#{mecanicienbean.closD()}" update=":f1"
-												oncomplete="PF('dialogMecanicien').hide();" />
-										</div>
-									</h:panelGrid>
-								</p:panel>
-							</div>
-						</p:dialog>
-					</h:form>
-				</div>
-			</div>
+												actionListener="#{departementbean.ClosDig()}" update=":f1"
+												oncomplete="PF('dialogDepartement').hide();" />
+										</h:panelGrid>
+									</p:panel>
+								</div>
+							</p:dialog>
+				
+						</h:form>
 		</h:form>
-	</div>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		
+		</div>
+			</div>
 </h:body>
 </html>

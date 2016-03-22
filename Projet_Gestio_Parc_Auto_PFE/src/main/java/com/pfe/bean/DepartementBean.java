@@ -1,8 +1,12 @@
 package com.pfe.bean;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
 import com.pfe.persistance.Departement;
 import com.pfe.services.DepartementService;
 @ManagedBean(name = "departementbean")
@@ -12,6 +16,15 @@ public class DepartementBean {
 	private String nomDepartement;
 	private String action;
 	
+	List<Departement>  deprts=new ArrayList<Departement>();
+	
+	public List<Departement> getDeprts() {
+		deprts=new DepartementService().rechercheTousDepartement();
+		return deprts;
+	}
+	public void setDeprts(List<Departement> deprts) {
+		this.deprts = deprts;
+	}
 	public String getAction() {
 		return action;
 	}
@@ -50,11 +63,10 @@ public class DepartementBean {
     	 if(nomDepartement =="")
 		   { 
 			   faces.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
-						"vous dever remplire tous les champs !! ", "")); 
+						"vous dever remplire le nom departement !! ", "")); 
 		   }
  	    else{
  	   d.setNomDepartement(nomDepartement);
- 	  
  	   
  	  	if(action!= null && action.equals("Ajouter")) 
  		  { 

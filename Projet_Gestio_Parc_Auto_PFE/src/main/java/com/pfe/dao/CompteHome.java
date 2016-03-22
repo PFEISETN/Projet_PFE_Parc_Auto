@@ -1,13 +1,10 @@
 package com.pfe.dao;
 import java.util.List;
-
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-
 import com.pfe.dao.HibernateUtil;
 import com.pfe.persistance.Compte;
-import com.pfe.persistance.Personnel;
 public class CompteHome {
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -58,6 +55,14 @@ public class CompteHome {
 						Compte.class);
 				return crit.list();
 
+			}
+		/////////////////////////////////////
+		 public void delete(Compte p) {
+				try {
+					sessionFactory.getCurrentSession().delete(p);
+				} catch (RuntimeException re) {
+					throw re;
+				}
 			}
 			
 }

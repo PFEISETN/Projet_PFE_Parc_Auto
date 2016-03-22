@@ -15,8 +15,14 @@
         <property name="adresse" type="java.lang.String">
             <column name="adresse" />
         </property>
-        <property name="telephone" type="java.lang.Integer">
+        <property name="telephone" type="java.lang.String">
             <column name="telephone" />
+        </property>
+        <property name="numero_tel1" type="java.lang.String">
+            <column name="numero_tel1" />
+        </property>
+        <property name="numero_tel2" type="java.lang.String">
+            <column name="numero_tel2" />
         </property>
         <set name="entretienss" table="entretien" inverse="false" lazy="true">
             <key>
