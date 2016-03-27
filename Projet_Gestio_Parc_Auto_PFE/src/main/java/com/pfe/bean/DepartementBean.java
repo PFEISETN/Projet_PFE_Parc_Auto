@@ -1,12 +1,10 @@
 package com.pfe.bean;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import com.pfe.persistance.Departement;
 import com.pfe.services.DepartementService;
 @ManagedBean(name = "departementbean")

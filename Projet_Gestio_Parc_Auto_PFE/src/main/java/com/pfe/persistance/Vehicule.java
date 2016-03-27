@@ -4,13 +4,22 @@ public class Vehicule {
 
 	private int immatricule;
 	private int nombre_place;
-	private String puissance;
+	private Float puissance;
 	private int kelometrage;
 	private int capacite_bagage;
 	private Etat  etat;
 	private Categorie categorie;
+	private Vignette vignette;
+	private Assurance assurance;
 	
 	
+	
+	public Assurance getAssurance() {
+		return assurance;
+	}
+	public void setAssurance(Assurance assurance) {
+		this.assurance = assurance;
+	}
 	public int getImmatricule() {
 		return immatricule;
 	}
@@ -23,10 +32,11 @@ public class Vehicule {
 	public void setNombre_place(int nombre_place) {
 		this.nombre_place = nombre_place;
 	}
-	public String getPuissance() {
+	
+	public Float getPuissance() {
 		return puissance;
 	}
-	public void setPuissance(String puissance) {
+	public void setPuissance(Float puissance) {
 		this.puissance = puissance;
 	}
 	public int getKelometrage() {
@@ -53,16 +63,28 @@ public class Vehicule {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
+	
+	public Vignette getVignette() {
+		return vignette;
+	}
+	public void setVignette(Vignette vignette) {
+		this.vignette = vignette;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + capacite_bagage;
+		result = prime * result
+				+ ((categorie == null) ? 0 : categorie.hashCode());
+		result = prime * result + ((etat == null) ? 0 : etat.hashCode());
 		result = prime * result + immatricule;
 		result = prime * result + kelometrage;
 		result = prime * result + nombre_place;
 		result = prime * result
 				+ ((puissance == null) ? 0 : puissance.hashCode());
+		result = prime * result
+				+ ((vignette == null) ? 0 : vignette.hashCode());
 		return result;
 	}
 	@Override
@@ -76,6 +98,16 @@ public class Vehicule {
 		Vehicule other = (Vehicule) obj;
 		if (capacite_bagage != other.capacite_bagage)
 			return false;
+		if (categorie == null) {
+			if (other.categorie != null)
+				return false;
+		} else if (!categorie.equals(other.categorie))
+			return false;
+		if (etat == null) {
+			if (other.etat != null)
+				return false;
+		} else if (!etat.equals(other.etat))
+			return false;
 		if (immatricule != other.immatricule)
 			return false;
 		if (kelometrage != other.kelometrage)
@@ -87,15 +119,14 @@ public class Vehicule {
 				return false;
 		} else if (!puissance.equals(other.puissance))
 			return false;
+		if (vignette == null) {
+			if (other.vignette != null)
+				return false;
+		} else if (!vignette.equals(other.vignette))
+			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Vehicule [immatricule=" + immatricule + ", nombre_place="
-				+ nombre_place + ", puissance=" + puissance + ", kelometrage="
-				+ kelometrage + ", capacite_bagage=" + capacite_bagage + "]";
-	}
-	
+
 	
 	
 }

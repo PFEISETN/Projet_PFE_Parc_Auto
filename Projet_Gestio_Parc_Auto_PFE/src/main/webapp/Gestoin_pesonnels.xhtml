@@ -206,7 +206,7 @@
 				<img src="img/26115.jpg" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
-				<p>Bonjours, Admin</p>
+				<p>Bonjours, #{connectBean.login}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
 		</div>
@@ -227,8 +227,8 @@
 			<li class="active"><a href="Templette.xhtml"> <i
 					class="fa fa-dashboard"></i> <span>Tableau de bord</span>
 			</a></li>
-			<li><a href="Parametres_general.xhtml"> <i
-					class="fa fa-cogs"></i> <span>Paramtre General</span>
+			<li><a href="Parametre_general.xhtml"> <i
+					class="fa fa-cogs"></i><span>Paramtre General</span>
 			</a></li>
 
 			<li><a href="Statique.xhtml"> <i class="fa fa-bar-chart-o"></i>
@@ -255,7 +255,13 @@
 
 			<li><a href="Demandes.xhtml"> <i class="fa fa-file-text-o"></i>
 					<span>Gestion demandes</span>
-			</a></li></ul></section></aside>
+			</a></li>
+			
+			<li><a href="Entretient.xhtml"> <i class="fa fa-file-text-o"></i>
+					<span>Gestion d'Entretien</span>
+			</a></li>
+			
+			</ul></section></aside>
 	       <div><h:form id="f1">
 	       <p:growl id="growl" sticky="true" />
 				<div align="center">
@@ -349,9 +355,9 @@
 				<br/><br/>
 				<h:form id="f2">
 	<p:growl id="growl2" life="5000" />
-	<p:dialog id="PersonnelDetail"  widgetVar="PersonnelDialog" modal="true"
-								showHeader="false" closable="false" resizable="false">	
-				<p:panel id="Personneldetail" header="Detail personnel" align="left">			
+	<div align="center"><p:dialog header="Personnel info" id="PersonnelDetail"  widgetVar="PersonnelDialog" 
+	modal="true" showEffect="blind" hideEffect="explode" resizable="false" position="botton center">	
+				<p:panel id="Personneldetail" align="left">			
 				<h:panelGrid columns="2" style="margin:0 auto;">
 				<p:outputLabel value="Matricule Personnel" style="color: crimson;"/>
                 <p:inputText value="#{personnelbean.matricule}" readonly="true" />
@@ -403,14 +409,9 @@
                  <p:outputLabel></p:outputLabel>
                 <p:outputLabel value="Compte: " style="color: crimson;"/>
                 <p:inputText value="#{personnelbean.compte.login}" readonly="true"/>
-                <p:commandButton value="Annuler"
-									icon="ui-icon-arrowreturnthick-1-n"
-									actionListener="#{personnelbean.closeDiag()}" 
-									oncomplete="PF('PersonnelDialog').hide();" />
-            </h:panelGrid>
+              </h:panelGrid>
       </p:panel>
-      
-    </p:dialog>
+    </p:dialog></div>
 	<p:dialog id="idDialog1" widgetVar="dialogPersonnel" modal="true"
 								showHeader="false" closable="false" resizable="false"  >
 								<div>

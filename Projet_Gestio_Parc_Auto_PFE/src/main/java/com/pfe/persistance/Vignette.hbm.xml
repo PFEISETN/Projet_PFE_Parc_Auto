@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 8 mars 2016 11:11:37 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 23 mars 2016 14:33:00 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.pfe.persistance.Vignette" table="vignette">
         <id name="numero_vignette" type="java.lang.Integer">
@@ -11,7 +11,7 @@
         <property name="date_debut" type="java.util.Date">
             <column name="date_debut" />
         </property>
-        <property name="montant" type="float">
+        <property name="montant" type="java.lang.Float">
             <column name="montant" />
         </property>
         <property name="date_fin" type="java.util.Date">
@@ -19,7 +19,7 @@
         </property>
         <set name="vehicule1" table="vehicule" inverse="false" lazy="true">
             <key>
-                <column name="numero_vehicule" />
+                <column name="numero_vignette" />
             </key>
             <one-to-many class="com.pfe.persistance.Vehicule" />
         </set>

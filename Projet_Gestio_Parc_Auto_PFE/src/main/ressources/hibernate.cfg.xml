@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-                                         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
  <session-factory>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
@@ -30,5 +30,7 @@
   <mapping class="com.pfe.persistance.Reparation" resource="com/pfe/persistance/Reparation.hbm.xml"/>
   <mapping class="com.pfe.persistance.RepPanne" resource="com/pfe/persistance/RepPanne.hbm.xml"/>
   <mapping class="com.pfe.persistance.Ville" resource="com/pfe/persistance/Ville.hbm.xml"/>
+  <mapping class="com.pfe.persistance.Assurance" resource="com/pfe/persistance/Assurance.hbm.xml"/>
+  <mapping class="com.pfe.persistance.TypeAssurance" resource="com/pfe/persistance/TypeAssurance.hbm.xml"/>
  </session-factory>
 </hibernate-configuration>

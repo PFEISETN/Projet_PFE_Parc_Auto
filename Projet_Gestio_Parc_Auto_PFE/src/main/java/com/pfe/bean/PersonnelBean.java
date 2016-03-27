@@ -45,41 +45,10 @@ public class PersonnelBean {
 	private Departement departementP;
 	private Service serviceP;
 	private Typepersonnel typePer;
-//	private String[] listeAttributs ;
-//	public String[] getListeAttributs() {
-//		listeAttributs=Rec_Liste_Attributs();
-//		return listeAttributs;
-//	}
-//
-//	public void setListeAttributs(String[] listeAttributs) {
-//		this.listeAttributs = listeAttributs;
-//	}
-
-//	public String[] Rec_Liste_Attributs()
-//	{ 
-//		// attributs est une liste pour recuperer les attributs du personnels dispo
-//	    String[] listeAttribut = new String[12];
-//		listeAttribut[1] = "Matricule";
-//		listeAttribut[2] = "Prenom";
-//		listeAttribut[3] = "Nom";
-//		listeAttribut[4] = "Telephone";
-//		listeAttribut[5] = "Cin";
-//		listeAttribut[6] = "Date Naissance";
-//		listeAttribut[7] = "Adresse";
-//		listeAttribut[8] = "N° GSM1";
-//		listeAttribut[9] = "N° GSM2";
-//		listeAttribut[10] = "N° compte";
-//		listeAttribut[11] = "Nom Departement";
-//		listeAttribut[12] = "Nom Ville";
-//	    return listeAttribut;	
-//		    
-//	}
 	private Ville villeP;
-     private String actionCompte;
+    private String actionCompte;
  	
-
-    
-	public String getActionCompte() {
+    public String getActionCompte() {
 		return actionCompte;
 	}
 
@@ -131,7 +100,7 @@ public class PersonnelBean {
 		return nomville;
 	}
 
-public void setNomville(String nomville) {
+    public void setNomville(String nomville) {
 		this.nomville = nomville;
 	}
 
@@ -157,10 +126,8 @@ public void setNomville(String nomville) {
 		pls = new PersonnelService().rechercheTousPersonnel();
 		return pls;
 	}
-
-	
-	  private List<Personnel> filtrePersonnel;
-	  
+    
+	private List<Personnel> filtrePersonnel;
 	public List<Personnel> getFiltrePersonnel() {
 		return filtrePersonnel;
 	}
@@ -173,7 +140,6 @@ public void setNomville(String nomville) {
 	{
 		per=new PersonnelService().recherchePersonnelParId(matricule);
 		return per;
-		//System.out.print(per.getCin());
 	}
 	
 	public void setPls(List<Personnel> pls) {

@@ -8,27 +8,17 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Parc Auto</title>
-	<meta
-		content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
-		name='viewport'></meta>
-	<meta name="description" content="Developed By M Abdur Rokib Promy"></meta>
-	<meta name="keywords"
-		content="Admin, Bootstrap 3, Template, Theme, Responsive"></meta>
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/ionicons.min.css" rel="stylesheet" type="text/css" />
 	<link href="css/morris/morris.css" rel="stylesheet" type="text/css" />
-	<link href="css/jvectormap/jquery-jvectormap-1.2.2.css"
-		rel="stylesheet" type="text/css" />
-	<link href="css/datepicker/datepicker3.css" rel="stylesheet"
-		type="text/css" />
-	<link href="css/daterangepicker/daterangepicker-bs3.css"
-		rel="stylesheet" type="text/css" />
+	<link href="css/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+	<link href="css/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
+	<link href="css/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
 	<link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
-	<link href='http://fonts.googleapis.com/css?family=Lato'
-		rel='stylesheet' type='text/css' />
+	<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
-	    <style type="text/css"></style>
+	<style type="text/css"></style>
     <style >
     .ui-growl {
     position:absolute;
@@ -201,7 +191,7 @@
 
 					<li class="divider"></li>
 
-					<li><a href="#"><i class="fa fa-ban fa-fw pull-right"></i>
+					<li><a href="Index.xhtml"><i class="fa fa-ban fa-fw pull-right"></i>
 							Logout</a></li>
 				</ul></li>
 		</ul>
@@ -216,7 +206,7 @@
 				<img src="img/26115.jpg" class="img-circle" alt="User Image" />
 			</div>
 			<div class="pull-left info">
-				<p>Bonjours, Admin</p>
+				<p>Bonjours, #{connectBean.login}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
 		</div>
@@ -237,15 +227,15 @@
 			<li class="active"><a href="Templette.xhtml"> <i
 					class="fa fa-dashboard"></i> <span>Tableau de bord</span>
 			</a></li>
-			<li><a href="Parametres_general.xhtml"> <i
-					class="fa fa-cogs"></i> <span>Paramtre General</span>
+			<li><a href="Parametre_general.xhtml"> <i
+					class="fa fa-cogs"></i><span>Paramtre General</span>
 			</a></li>
 
 			<li><a href="Statique.xhtml"> <i class="fa fa-bar-chart-o"></i>
 					<span> Statistique </span>
 			</a></li>
 
-			<li><a href="Gestion_vehicules.xhtml"> <i
+			<li><a href="Gestion_Vehicule.xhtml"> <i
 					class="ion-ios7-cart"></i> <span> Gestion Vehicules </span>
 			</a></li>
 			<li><a href="general.html"> <i class="fa fa-wrench"></i> <span>Gestion
@@ -265,7 +255,13 @@
 
 			<li><a href="Demandes.xhtml"> <i class="fa fa-file-text-o"></i>
 					<span>Gestion demandes</span>
-			</a></li></ul></section></aside>
+			</a></li>
+			
+			<li><a href="Entretient.xhtml"> <i class="fa fa-file-text-o"></i>
+					<span>Gestion d'Entretien</span>
+			</a></li>
+			
+			</ul></section></aside>
 	       <div>
 	       
 	       

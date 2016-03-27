@@ -24,7 +24,7 @@
         <property name="coutTotal" type="java.lang.Float">
             <column name="cout_total" />
         </property>
-        <property name="dureeEntretien" type="java.lang.Integer">
+        <property name="dureeEntretien" type="java.lang.Double">
             <column name="duree_entretien" />
         </property>
     </class>

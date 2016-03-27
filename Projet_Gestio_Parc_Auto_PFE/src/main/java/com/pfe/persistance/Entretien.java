@@ -14,7 +14,7 @@ public class Entretien  {
 	private Date dateArrive;
 	private Date dateDepart;
 	private Float coutTotal;
-	private Integer dureeEntretien;
+	private Double dureeEntretien;
 	private Mecanicien mecanicien;
 	
 	public Mecanicien getMecanicien() {
@@ -29,7 +29,7 @@ public class Entretien  {
 	}
 
 	public Entretien(Typeentretien typeentretien, Date dateArrive,
-			Date dateDepart, Float coutTotal, Integer dureeEntretien) {
+			Date dateDepart, Float coutTotal, Double dureeEntretien) {
 		this.typeentretien = typeentretien;
 		this.dateArrive = dateArrive;
 		this.dateDepart = dateDepart;
@@ -77,11 +77,11 @@ public class Entretien  {
 		this.coutTotal = coutTotal;
 	}
 
-	public Integer getDureeEntretien() {
-		return this.dureeEntretien;
+	public Double getDureeEntretien() {
+		return dureeEntretien;
 	}
 
-	public void setDureeEntretien(Integer dureeEntretien) {
+	public void setDureeEntretien(Double dureeEntretien) {
 		this.dureeEntretien = dureeEntretien;
 	}
 

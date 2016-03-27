@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated 8 mars 2016 11:36:45 by Hibernate Tools 3.4.0.CR1 -->
+<!-- Generated 23 mars 2016 14:33:00 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.pfe.persistance.Vehicule" table="vehicule">
         <id name="immatricule" type="java.lang.Integer">
@@ -9,9 +9,9 @@
             <generator class="increment" />
         </id>
         <property name="nombre_place" type="java.lang.Integer">
-            <column name="ombre_place" />
+            <column name="nombre_place" />
         </property>
-        <property name="puissance" type="java.lang.String">
+        <property name="puissance" type="java.lang.Float">
             <column name="puissance" />
         </property>
         <property name="kelometrage" type="java.lang.Integer">
@@ -25,6 +25,12 @@
         </many-to-one>
         <many-to-one name="categorie" class="com.pfe.persistance.Categorie" fetch="select">
             <column name="numero_categorie" />
+        </many-to-one>
+        <many-to-one name="vignette" class="com.pfe.persistance.Vignette" fetch="select">
+            <column name="numero_vignette" />
+        </many-to-one>
+        <many-to-one name="assurance" class="com.pfe.persistance.Assurance" fetch="select">
+            <column name="numero_assurance" />
         </many-to-one>
     </class>
 </hibernate-mapping>

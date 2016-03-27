@@ -4,7 +4,6 @@ public class Modele {
 	private Integer numero_modele;
 	private String nom_modele;
 	private String type_modele;
-	
 	private Marque marque;
 
 	public Integer getNumero_modele() {
